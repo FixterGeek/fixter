@@ -2,10 +2,10 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import {Link} from 'react-router-dom';
 import './CardCamp.css';
-import temario from '../../assets/temarios/temario.pdf';
 
 
-export const CardCampDisplay = ({nombre, descript, imagen, fecha, precio}) => {
+
+export const CardCampDisplay = ({nombre, descript, imagen, fecha, precio, temario, horario, dia}) => {
 
     return (
         <div className="card">
@@ -29,7 +29,7 @@ export const CardCampDisplay = ({nombre, descript, imagen, fecha, precio}) => {
                         <div className="etq">
                             <FontAwesome name="clock-o" size="2x"/>
                              <h3>{fecha}</h3>
-                            <p>Cada sábado<br/> de 9am a 3pm</p>
+                            <p>{dia} <br />{horario}</p>
                         </div>
                         <div className="etq">
                             <FontAwesome name="map-marker" size="2x"/>

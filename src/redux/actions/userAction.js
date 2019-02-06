@@ -2,7 +2,6 @@
  * Created by brendaortega on 14/01/18.
  */
 //User login
-import firebase from '../../firebase';
 
 
     //grupito
@@ -20,6 +19,14 @@ function loginSuccess(user){
 //thunk
 export const loginAction = (user) => (dispatch, getState) => {
   dispatch(loginSuccess(user));
+};
+
+//check for user at the begginning
+export const checkForUser = () => (dispatch) => {
+  const user = localStorage.getItem("user");
+  if (user){
+    dispatch(loginSuccess(JSON.parse(user)));
+  }
 };
 
 //grupito de cerrar sesion
