@@ -15,7 +15,7 @@ export const NavDisplay = ({isLogged, signOut, photoURL}) => {
             </div>
             <div className="pestanas">
                 <Link to="/bootcamp">
-                    <span className="less">Learn Now</span>
+                    <span className="less">Aplicar</span>
                 </Link>
                 <hr className="divider"/>
 

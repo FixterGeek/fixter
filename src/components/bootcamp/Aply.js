@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Aply.css';
 import firebase from '../../firebase';
 import { AplyForm } from './AplyForm';
+import {createAplication} from "../../services/aplications-service";
+import toastr from 'toastr'
 
 
 class Aply extends Component {
@@ -12,7 +14,9 @@ class Aply extends Component {
         },
         aplys: [
         ],
-        courses: null
+        courses: [
+			{_id: "", title: "Hooks + Firebase"}
+		]
     };
     componentWillMount() {
         let user = localStorage.getItem("user");
@@ -22,15 +26,7 @@ class Aply extends Component {
             this.setState({ isLogged: false })
             this.props.history.push("/login");
         }
-        firebase.database().ref('courses/').on('value', snap => {
-            var data = [];
-            snap.forEach(doc => {
-                let course = doc.val()
-                course.id = doc.key
-                data.push(course);
-            });
-            this.setState({ courses: data })
-        })
+
     }
     componentDidMount() {
         window.scroll(0, 0)
@@ -45,44 +41,24 @@ class Aply extends Component {
     };
 
     validateForm = () => {
-        // let newAply = this.state.newAply;
-        // console.log(newAply)
-        // let errors = this.state.errors;
-        let isOk = true;
-        return isOk;
+        const {newAply} = this.state;
+        // validando que el formulario tenga los 4 atributos minimos
+        return Object.keys(newAply).length >= 4;
     };
     onSave = (e) => {
-        e.preventDefault()
-        let user = JSON.parse(localStorage.getItem("user"))
-        const { newAply } = this.state
-        newAply.uid = user.uid
+        e.preventDefault();
+        let user = JSON.parse(localStorage.getItem("user"));
+        const { newAply } = this.state;
+        newAply.user = user.uid;
         if (this.validateForm()) {
-            firebase.database().ref("applications")
-                .push(this.state.newAply)
-                .then(r => {
-                    // console.log(r.key)
-                    if (this.state.file) {
-                        let updates = {};
-                        firebase.storage()
-                            .ref(r.key)
-                            .child(this.state.file.name)
-                            .put(this.state.file)
-                            .then(s => {
-                                const link = s.downloadURL;
-                                let newAply = this.state.newAply;
-                                newAply["photos"] = [link];
-                                updates[`/aplys/${r.key}`] = newAply;
-                                firebase.database().ref().update((updates));
-                            });
-                    }
-                    // console.log("Si guarde" + r.key)
-                    alert("Tu aplicación ha sido enviada");
-                    this.props.history.push("/perfil");
-
-                })
-                .catch(e => {
-                    // console.log("asi no:", e.message);
-                });
+			createAplication(newAply)
+				.then(res => {
+					toastr.success("Recibimos tu aplicación")
+				})
+				.catch(err => {
+					console.error(err.response);
+					toastr.error("Error al recibir tu aplicación, intenta más tarde")
+				})
         } else {
             alert("No se pudo enviar la aplicación");
         };

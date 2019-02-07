@@ -5,7 +5,7 @@ import './CardCamp.css';
 
 
 
-export const CardCampDisplay = ({nombre, descript, imagen, fecha, precio, temario, horario, dia}) => {
+export const CardCampDisplay = ({nombre, descript, imagen, fecha, precio, temario, horario, dia, place, address, dia2, horario2, sabatino}) => {
 
     return (
         <div className="card">
@@ -25,16 +25,17 @@ export const CardCampDisplay = ({nombre, descript, imagen, fecha, precio, temari
                 </div>
             </div>
             <div className="card_img" style={{backgroundImage:`url("${imagen}")`}}>
-                    <div className="etiqueta">
+                    <div className={`etiqueta ${sabatino ? 'course-large' : null}`}>
                         <div className="etq">
                             <FontAwesome name="clock-o" size="2x"/>
                              <h3>{fecha}</h3>
                             <p>{dia} <br />{horario}</p>
+							{sabatino ? <p className="margin-small-top">{dia2} <br />{horario2}</p> : null}
                         </div>
                         <div className="etq">
                             <FontAwesome name="map-marker" size="2x"/>
-                            <h3>CITNOVA</h3>
-                            <p>Blvd. Ex-Hacienda de la Concepcion #3</p>
+                            <h3>{place}</h3>
+                            <p>{address}</p>
                         </div>
                         <div className="etq">
                             <FontAwesome name="check-square-o" size="2x"/>

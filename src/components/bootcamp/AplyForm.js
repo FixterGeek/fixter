@@ -31,38 +31,13 @@ export const AplyForm = ({ onSave, errors, onChangeAply, name, email, telefono, 
                         </div>
                         <div className="formgroup">
                             <div className='option'>
-                                <select name="path" onChange={onChangeAply} type="text" className='icon' id="name" data-validation-required-message="Please complete">
+                                <select name="course" onChange={onChangeAply} type="text" className='icon' id="name" data-validation-required-message="Please complete">
                                     <option>Selecciona un curso..</option>
-                                    {courses && courses.map(course => <option key={course.id} value={course.id}>{course.courseName}</option>)}
+                                    {courses && courses.map(course => <option key={course._id} value={course._id}>{course.title}</option>)}
                                 </select>
                             </div>
                         </div>
-                        <br />
-                        <hr className="division" />
-                        <br />
-                        <div className="formgroup">
-                            <label htmlFor="">¿Quieres aplicar para una beca de descuento?</label>
-                            <br />
-                            <br />
-                            <div className='option'>
-                                <select onChange={onChangeAply} name="beca" type="text" className='icon' id="name" required data-validation-required-message="Please enter your name.">
-                                    <option default value="Beca">Beca</option>
-                                    <option value="Si">si </option>
-                                    <option value="No">no</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div className="formgroup">
-
-                            <div className="inp">
-                                <div className="msj">
-                                    <FontAwesome name="commenting" /></div>
-
-                                <textarea value={razon} onChange={onChangeAply} type="text" name="mensaje" className="formcontrol" placeholder="Porque deberías obtenerla? Escribe un breve mensaje" />
-                                <p className="help-block text-danger"></p></div>
-                        </div>
-                        <br />
-                        <button className="btn_start">Enviar</button>
+                        <button type="submit" className="btn_start margin-small-top">Enviar</button>
                     </form>
                 </div>
             </div>
