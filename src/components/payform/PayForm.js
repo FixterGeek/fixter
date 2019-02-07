@@ -75,16 +75,25 @@ class PayForm extends Component {
 
 
 	validateCard = (card) => {
-		return !!(this.conekta.api.card.validateNumber(card.number) ||
-			this.conekta.api.card.validateExpirationDate(card.exp_month, card.exp_year) ||
+		return !!(this.conekta.api.card.validateNumber(card.number) &&
+			this.conekta.api.card.validateExpirationDate(card.exp_month, card.exp_year) &&
 			this.conekta.api.card.validateCVC(card.cvc));
 	};
 
 
 	tokenize = () =>{
 		this.conekta.api.Token.create({card:this.state.card}, (conekta_obj) => {
-			toastr.success("Pago procesado con éxito");
-			createOrder(conekta_obj.id);
+			const { period } = this.state.card;
+			let obj = {
+				token: conekta_obj.id,
+				period
+			};
+			createOrder(obj)
+				.then(res => {
+					toastr.success("Pago procesado con éxito");
+					this.history.push("/perfil");
+				})
+				.catch(err => toastr.error("Algo salió mal"))
 		}) ,
 			(err)=> {
 				console.error(err);
