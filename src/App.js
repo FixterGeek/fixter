@@ -3,9 +3,10 @@ import {Routes} from './routes';
 import './App.css';
 import Nav from './components/nav/NavContainer';
 import Footer from './components/footer/Footer';
+import 'toastr/build/toastr.min.css';
 
 class App extends Component {
-    render() {
+	render() {
         return (
             <div>
                 <div>
