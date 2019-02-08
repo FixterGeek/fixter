@@ -82,7 +82,7 @@ class PayForm extends Component {
 
 
 	tokenize = () =>{
-		this.conekta.api.Token.create({card:this.state.card}, (conekta_obj) => {
+		const conektaSuccess = (conekta_obj) => {
 			const { period } = this.state.card;
 			let obj = {
 				token: conekta_obj.id,
@@ -94,11 +94,13 @@ class PayForm extends Component {
 					this.history.push("/perfil");
 				})
 				.catch(err => toastr.error("Algo salió mal"))
-		}) ,
-			(err)=> {
-				console.error(err);
-				toastr.error("Algo salió mal")
-			}
+		};
+		const conektaError = (err)=> {
+			console.error(err);
+			toastr.error("Algo salió mal")
+		};
+		// creando el token de conekta
+		this.conekta.api.Token.create({card:this.state.card}, conektaSuccess, conektaError)
 	};
 
 	handlePayment = e => {

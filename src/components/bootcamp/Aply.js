@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Aply.css';
-import firebase from '../../firebase';
 import { AplyForm } from './AplyForm';
 import {createAplication} from "../../services/aplications-service";
 import toastr from 'toastr'
