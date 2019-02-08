@@ -4,6 +4,7 @@ import firebase from '../../firebase';
 import { AplyForm } from './AplyForm';
 import {createAplication} from "../../services/aplications-service";
 import toastr from 'toastr'
+import {getCourses} from "../../services/course-service";
 
 
 class Aply extends Component {
@@ -14,9 +15,7 @@ class Aply extends Component {
         },
         aplys: [
         ],
-        courses: [
-			{_id: "", title: "Hooks + Firebase"}
-		]
+        courses: []
     };
     componentWillMount() {
         let user = localStorage.getItem("user");
@@ -26,7 +25,11 @@ class Aply extends Component {
             this.setState({ isLogged: false })
             this.props.history.push("/login");
         }
-
+		getCourses()
+			.then(res => {
+				const {courses} = res.data;
+				this.setState({courses});
+			}).catch(err => console.error(err))
     }
     componentDidMount() {
         window.scroll(0, 0)
