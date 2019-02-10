@@ -5,7 +5,8 @@ import toastr from "toastr";
 import moment from "moment";
 import "moment/locale/es";
 
-const url = "http://localhost:3000";
+//const url = "http://localhost:3000";
+const url = "fixtercamp.herokuapp.com";
 
 export default class AdminHome extends Component {
 	state = {
