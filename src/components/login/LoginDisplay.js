@@ -25,7 +25,7 @@ export const LoginDisplay = ({
 					/>
 				)}
 			</span>
-			<h1>{error}</h1>
+			<h3 style={{ color: "red" }}>{error}</h3>
 			<div className="redes_login">
 				<div className="circle_f" onClick={loginFacebook}>
 					<FontAwesome name="facebook" />

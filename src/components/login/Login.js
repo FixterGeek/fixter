@@ -138,19 +138,38 @@ class Login extends Component {
 	onLogin = e => {
 		e.preventDefault();
 		const { login } = this.state;
-		firebase
-			.auth()
-			.signInWithEmailAndPassword(login.email, login.password)
-			.then(usuario => {
-				let user = JSON.stringify(usuario);
-				localStorage.setItem("user", user);
-				//this.props.loginAction(user);
-				this.props.history.push("/perfil");
+		console.log(login);
+		fetch(url + "/login", {
+			method: "post",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(login)
+		})
+			.then(response => {
+				if (!response.ok) return { message: response.statusText };
+				return response.json();
 			})
-			.catch(e => {
-				// console.log(e);
-				alert(codigos[e.code]);
+			.then(r => {
+				console.log(r);
+				if (r.message) return this.setState({ error: r.message });
+				localStorage.setItem("token", r.token);
+				localStorage.setItem("user", JSON.stringify(r.user));
+				this.props.history.push("/perfil");
 			});
+		// firebase
+		// 	.auth()
+		// 	.signInWithEmailAndPassword(login.email, login.password)
+		// 	.then(usuario => {
+		// 		let user = JSON.stringify(usuario);
+		// 		localStorage.setItem("user", user);
+		// 		//this.props.loginAction(user);
+		// 		this.props.history.push("/perfil");
+		// 	})
+		// 	.catch(e => {
+		// 		// console.log(e);
+		// 		alert(codigos[e.code]);
+		// 	});
 	};
 	loginGoogle = () => {
 		const provider = new firebase.auth.GoogleAuthProvider();
