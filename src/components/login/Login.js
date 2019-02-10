@@ -7,8 +7,8 @@ import firebase from "../../firebase";
 import { connect } from "react-redux";
 //import { loginAction } from "../../redux/actions/userAction";
 
-const url = "http://localhost:3000";
-//const url = "https://fixtercamp.herokuapp.com";
+//const url = "http://localhost:3000";
+const url = "https://fixtercamp.herokuapp.com";
 const codigos = {
 	"auth/wrong-password": "Tu contraseña es incorrecta",
 	"auth/email-already-in-use": "Este usuario ya esta registrado"
@@ -185,6 +185,8 @@ class Login extends Component {
 			body: JSON.stringify(body)
 		})
 			.then(res => {
+				if (res.status === 404)
+					return { message: "El backend no responde" };
 				return res.json();
 			})
 			.then(r => {
@@ -194,7 +196,7 @@ class Login extends Component {
 				this.setState({ error: null });
 				localStorage.setItem("token", r.token);
 				localStorage.setItem("user", JSON.stringify(r.user));
-				this.props.history.push("/profile");
+				this.props.history.push("/perfil");
 			});
 		// firebase
 		// 	.auth()
