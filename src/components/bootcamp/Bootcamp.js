@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './Bootcamp.css';
 import bootcamp from '../../assets/bootc.png';
-import laptop from '../../assets/node.png';
-import temario_edition from '../../assets/temarios/Temario_IntensiveCamp.pdf';
+import temario_edition from '../../assets/temarios/Reacjs hooks + firebase.pdf';
 import {CardCampDisplay} from '../CardCamp/CardCampDisplay';
 import hooks from '../../assets/51565935_2358159057541818_2165592797782999040_o.jpg'
 
@@ -27,6 +26,7 @@ class Bootcamp extends Component {
                         imagen={hooks}
                         fecha="4 de Marzo"
 						sabatino={true}
+						temario={temario_edition}
 						dia2="Mar, Jue, Sab"
 						horario2="7pm a 10pm y Sab 10am a 2pm"
 						place="Cubic Idea"

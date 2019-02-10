@@ -17,12 +17,26 @@ class PayForm extends Component {
 				period: "contado",
 				cvc: "",
 				phone: ""
-			}
+			},
+			isLogged: false,
+			user: {},
+			token: null
 		};
 		this.conekta = new Conekta()
 	}
 
-    componentDidMount () {
+	componentWillMount() {
+		let user = JSON.parse(localStorage.getItem("user"));
+		let token = localStorage.getItem("token");
+		if (user) {
+			this.setState({ isLogged: true, user, token })
+		} else {
+			this.setState({ isLogged: false });
+			this.props.history.push("/login");
+		}
+	}
+
+	componentDidMount () {
         window.scroll(0, 0)
     }
 
@@ -82,23 +96,26 @@ class PayForm extends Component {
 
 
 	tokenize = () =>{
-		this.conekta.api.Token.create({card:this.state.card}, (conekta_obj) => {
+		const conektaSuccess = (conekta_obj) => {
 			const { period } = this.state.card;
+			const {token} = this.state;
 			let obj = {
 				token: conekta_obj.id,
 				period
 			};
-			createOrder(obj)
+			createOrder(obj, token)
 				.then(res => {
 					toastr.success("Pago procesado con éxito");
 					this.history.push("/perfil");
 				})
 				.catch(err => toastr.error("Algo salió mal"))
-		}) ,
-			(err)=> {
-				console.error(err);
-				toastr.error("Algo salió mal")
-			}
+		};
+		const conektaError = (err)=> {
+			console.error(err);
+			toastr.error("Algo salió mal")
+		};
+		// creando el token de conekta
+		this.conekta.api.Token.create({card:this.state.card}, conektaSuccess, conektaError)
 	};
 
 	handlePayment = e => {
