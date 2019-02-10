@@ -7,7 +7,7 @@ import toastr from "toastr";
 import axios from "axios";
 
 //const url = "http://localhost:3000";
-const url = "fixtercamp.herokuapp.com";
+const url = "https://fixtercamp.herokuapp.com";
 
 class Aply extends Component {
 	state = {
