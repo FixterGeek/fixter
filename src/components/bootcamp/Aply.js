@@ -75,12 +75,12 @@ class Aply extends Component {
 
 
     render() {
-        const { aplys, errors, courses } = this.state
+        const {errors, courses, newAply } = this.state
         return (
             <div>
                 <AplyForm
                     courses={courses}
-					{...this.state.newAply}
+					{...newAply}
                     onChangeAply={this.onChangeAply}
                     errors={errors}
                     onSave={this.onSave}
