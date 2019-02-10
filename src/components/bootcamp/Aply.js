@@ -5,6 +5,8 @@ import {createAplication} from "../../services/aplications-service";
 import toastr from 'toastr'
 import {getCourses} from "../../services/course-service";
 
+//const url = "http://localhost:3000";
+const url = "fixtercamp.herokuapp.com";
 
 class Aply extends Component {
     state = {
@@ -64,15 +66,22 @@ class Aply extends Component {
 						}});
 					toastr.success("Recibimos tu aplicación")
 				})
-				.catch(err => {
-					console.error(err.response);
-					toastr.error("Error al recibir tu aplicación, intenta más tarde")
-				})
-        } else {
-            alert("No se pudo enviar la aplicación");
-        };
-    };
-
+				.catch(e => {
+					console.log(e);
+					toastr.error("No se pudo subir, intenta más tarde.");
+				});
+			// createAplication(newAply)
+			// 	.then(res => {
+			// 		toastr.success("Recibimos tu aplicación")
+			// 	})
+			// 	.catch(err => {
+			// 		console.error(err.response);
+			// 		toastr.error("Error al recibir tu aplicación, intenta más tarde")
+			// 	})
+		} else {
+			alert("existen errores");
+		}
+	};
 
     render() {
         const {errors, courses, newAply } = this.state
