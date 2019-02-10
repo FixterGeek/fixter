@@ -26,7 +26,7 @@ class PayForm extends Component {
 	}
 
 	componentWillMount() {
-		let user = localStorage.getItem("user");
+		let user = JSON.parse(localStorage.getItem("user"));
 		let token = localStorage.getItem("token");
 		if (user) {
 			this.setState({ isLogged: true, user, token })
