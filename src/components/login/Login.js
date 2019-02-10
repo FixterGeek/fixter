@@ -5,10 +5,10 @@ import "./Login.css";
 import firebase from "../../firebase";
 //redux
 import { connect } from "react-redux";
-import { loginAction } from "../../redux/actions/userAction";
+//import { loginAction } from "../../redux/actions/userAction";
 
-//const url = "http://localhost:3000";
-const url = "https://fixtercamp.herokuapp.com";
+const url = "http://localhost:3000";
+//const url = "https://fixtercamp.herokuapp.com";
 const codigos = {
 	"auth/wrong-password": "Tu contraseña es incorrecta",
 	"auth/email-already-in-use": "Este usuario ya esta registrado"
@@ -16,6 +16,7 @@ const codigos = {
 
 class Login extends Component {
 	state = {
+		loading: true,
 		mostrar: false,
 		login: {
 			email: null,
@@ -49,10 +50,11 @@ class Login extends Component {
 				if (!result.user) return;
 				console.log(result.user);
 				localStorage.setItem("user", JSON.stringify(result.user));
-				this.props.loginAction(result.user);
+				//this.props.loginAction(result.user);
 				this.props.history.push("/perfil");
 			})
-			.catch(function(error) {
+			.catch(error => {
+				this.setState({ loading: false });
 				// console.log(error)
 			});
 	}
@@ -118,18 +120,20 @@ class Login extends Component {
 		this.setState({ login });
 		// console.log(login);
 	};
-	saveRegistro = e => {
-		const input = e.target.name;
-		const value = e.target.value;
-		const nuevoRegistro = this.state.nuevoRegistro;
-		nuevoRegistro[input] = value;
-		this.setState({ nuevoRegistro });
+	// saveRegistro = e => {
+	// 	console.log(e);
+	// 	return;
+	// 	const input = e.target.name;
+	// 	const value = e.target.value;
+	// 	const nuevoRegistro = this.state.nuevoRegistro;
+	// 	nuevoRegistro[input] = value;
+	// 	this.setState({ nuevoRegistro });
 
-		// console.log(login);
-		if (nuevoRegistro.pass !== nuevoRegistro.pass2)
-			this.setState({ error: "tu contrasena no coincide" });
-		else this.setState({ error: null });
-	};
+	// 	// console.log(login);
+	// 	if (nuevoRegistro.pass !== nuevoRegistro.pass2)
+	// 		this.setState({ error: "tu contrasena no coincide" });
+	// 	else this.setState({ error: null });
+	// };
 
 	onLogin = e => {
 		e.preventDefault();
@@ -140,7 +144,7 @@ class Login extends Component {
 			.then(usuario => {
 				let user = JSON.stringify(usuario);
 				localStorage.setItem("user", user);
-				this.props.loginAction(user);
+				//this.props.loginAction(user);
 				this.props.history.push("/perfil");
 			})
 			.catch(e => {
@@ -163,36 +167,65 @@ class Login extends Component {
 
 	createUser = e => {
 		e.preventDefault();
-		const { nuevoRegistro } = this.state;
-		firebase
-			.auth()
-			.createUserWithEmailAndPassword(
-				nuevoRegistro.email,
-				nuevoRegistro.pass
-			)
-			.then(s => {
-				this.setState({ registro: false });
+		let r = e.target;
+		if (r.pass.value !== r.pass2.value) {
+			this.setState({ error: "tu contrasena no coincide" });
+			return;
+		} else this.setState({ error: null });
+		let body = {
+			username: r.email.value,
+			email: r.email.value,
+			password: r.pass.value
+		};
+		fetch(url + "/signup", {
+			method: "post",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(body)
+		})
+			.then(res => {
+				return res.json();
 			})
-			.catch(e => {
-				// console.log(e);
-				alert(codigos[e.code]);
+			.then(r => {
+				if (r.message) {
+					return this.setState({ error: r.message });
+				}
+				this.setState({ error: null });
+				localStorage.setItem("token", r.token);
+				localStorage.setItem("user", JSON.stringify(r.user));
+				this.props.history.push("/profile");
 			});
-	};
+		// firebase
+		// 	.auth()
+		// 	.createUserWithEmailAndPassword(
+		// 		nuevoRegistro.email,
+		// 		nuevoRegistro.pass
+		// 	)
+		// 	.then(s => {
+		// 		this.setState({ registro: false });
+		// 	})
+		// 	.catch(e => {
+		// 		// console.log(e);
+		// 		alert(codigos[e.code]);
+		// 	});
+	}; // createUser
 	render() {
-		const { registro, nuevoRegistro } = this.state;
+		const { registro, nuevoRegistro, loading } = this.state;
 		return (
 			<div>
 				{registro ? (
 					<RegisterDisplay
 						toggleMostrar={this.toggleMostrar}
 						mostrar={this.state.mostrar}
-						saveRegistro={this.saveRegistro}
+						//saveRegistro={this.saveRegistro}
 						error={this.state.error}
 						onSubmit={this.createUser}
 						{...nuevoRegistro}
 					/>
 				) : (
 					<LoginDisplay
+						loading={loading}
 						loginFacebook={this.loginFacebook}
 						loginGoogle={this.loginGoogle}
 						changeRegistro={this.changeRegistro}
@@ -210,14 +243,4 @@ class Login extends Component {
 	}
 }
 
-function mapStateToProps(state, ownProps) {
-	console.log(state);
-	return {
-		user: state.user.userObject
-	};
-}
-
-export default (Login = connect(
-	mapStateToProps,
-	{ loginAction }
-)(Login));
+export default Login;
