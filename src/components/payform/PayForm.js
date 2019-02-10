@@ -17,12 +17,26 @@ class PayForm extends Component {
 				period: "contado",
 				cvc: "",
 				phone: ""
-			}
+			},
+			isLogged: false,
+			user: {},
+			token: null
 		};
 		this.conekta = new Conekta()
 	}
 
-    componentDidMount () {
+	componentWillMount() {
+		let user = localStorage.getItem("user");
+		let token = localStorage.getItem("token");
+		if (user) {
+			this.setState({ isLogged: true, user, token })
+		} else {
+			this.setState({ isLogged: false });
+			this.props.history.push("/login");
+		}
+	}
+
+	componentDidMount () {
         window.scroll(0, 0)
     }
 
@@ -84,11 +98,12 @@ class PayForm extends Component {
 	tokenize = () =>{
 		const conektaSuccess = (conekta_obj) => {
 			const { period } = this.state.card;
+			const {token} = this.state;
 			let obj = {
 				token: conekta_obj.id,
 				period
 			};
-			createOrder(obj)
+			createOrder(obj, token)
 				.then(res => {
 					toastr.success("Pago procesado con éxito");
 					this.history.push("/perfil");

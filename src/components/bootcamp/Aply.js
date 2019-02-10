@@ -51,7 +51,7 @@ class Aply extends Component {
         e.preventDefault();
         let user = JSON.parse(localStorage.getItem("user"));
         const { newAply } = this.state;
-        newAply.user = user.uid;
+        if(user) newAply.user = user._id;
         if (this.validateForm()) {
 			createAplication(newAply)
 				.then(res => {
