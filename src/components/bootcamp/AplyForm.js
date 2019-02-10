@@ -4,6 +4,7 @@ import FontAwesome from 'react-fontawesome';
 
 
 export const AplyForm = ({ onSave, errors, onChangeAply, name, email, telefono, razon, courses }) => {
+	console.log(name, email, telefono)
     return (
         <div >
             <div className="aplicacion">
@@ -14,7 +15,7 @@ export const AplyForm = ({ onSave, errors, onChangeAply, name, email, telefono, 
                         <div className="formgroup">
                             <div className="inp">
                                 <FontAwesome name="user" />
-                                <input type="text" value={name} onChange={onChangeAply} name="nombre" className="formcontrol" placeholder="Nombre" required data-validation-required-message="Porfavor ingresa tu nombre" />
+                                <input type="text" value={name} onChange={onChangeAply} name="name" className="formcontrol" placeholder="Nombre" required data-validation-required-message="Porfavor ingresa tu nombre" />
                                 <p className="help-block text-danger"></p></div>
                         </div>
                         <div className="formgroup">
@@ -26,7 +27,7 @@ export const AplyForm = ({ onSave, errors, onChangeAply, name, email, telefono, 
                         <div className="formgroup">
                             <div className="inp">
                                 <FontAwesome name="user" />
-                                <input type="tel" value={telefono} onChange={onChangeAply} name="tel" className="formcontrol" placeholder="Teléfono" id="phone" required data-validation-required-message="Porfavor ingresa tu numero telefonico" />
+                                <input type="tel" value={telefono} onChange={onChangeAply} name="telefono" className="formcontrol" placeholder="Teléfono" id="phone" required data-validation-required-message="Porfavor ingresa tu numero telefonico" />
                                 <p className="help-block text-danger"></p></div>
                         </div>
                         <div className="formgroup">

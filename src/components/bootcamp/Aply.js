@@ -10,10 +10,11 @@ class Aply extends Component {
     state = {
         errors: {},
         newAply: {
-
+			name: "",
+			email: "",
+			course:"",
+			telefono: ""
         },
-        aplys: [
-        ],
         courses: []
     };
     componentWillMount() {
@@ -55,6 +56,12 @@ class Aply extends Component {
         if (this.validateForm()) {
 			createAplication(newAply)
 				.then(res => {
+					this.setState({newAply: {
+							name: "",
+							email: "",
+							course:"",
+							telefono: ""
+						}});
 					toastr.success("Recibimos tu aplicación")
 				})
 				.catch(err => {
@@ -73,8 +80,7 @@ class Aply extends Component {
             <div>
                 <AplyForm
                     courses={courses}
-                    aplys={aplys}
-                    aply={this.state.newAply}
+					{...this.state.newAply}
                     onChangeAply={this.onChangeAply}
                     errors={errors}
                     onSave={this.onSave}
