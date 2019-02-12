@@ -55,10 +55,11 @@ export default function NavDisplay(props) {
 							<img
 								className="userphoto"
 								src={
-									(photoURL &&
-										providerData[0].providerId !==
-											"facebook.com") ||
-									"http://pngimages.net/sites/default/files/user-png-image-3003.png"
+									photoURL &&
+									providerData[0].providerId !==
+										"facebook.com"
+										? photoURL
+										: "http://pngimages.net/sites/default/files/user-png-image-3003.png"
 								}
 								alt=""
 							/>
