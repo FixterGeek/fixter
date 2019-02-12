@@ -18,6 +18,7 @@ export default function NavDisplay(props) {
 	}
 
 	let { photoURL } = user || {};
+	//console.log(photoURL);
 	return (
 		<div className="nav-bar">
 			<div className="logo">
