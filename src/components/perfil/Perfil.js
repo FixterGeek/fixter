@@ -10,7 +10,8 @@ class Perfil extends Component {
 
     state = {
         isLogged: false,
-        user: null
+        user: null,
+        applications:[]
     };
 
     componentWillMount() {
@@ -26,14 +27,19 @@ class Perfil extends Component {
         }
     }
 
+    pay=(app)=>{
+        localStorage.setItem('currentApplication', JSON.stringify(app))
+        this.props.history.push('/pay')
+    }
+
     getUserAplications = () => {
         axios.get(`${url}/apply/self`,{
             headers:{
                 'Authorization':localStorage.getItem('token'),
                 'Content-Type':'application/json'
             }
-        }).then(apps=>{
-            console.log(apps)
+        }).then(r=>{
+            this.setState({applications:r.data})
         }).catch(e=>{
             console.log(e.response)
         })
@@ -43,9 +49,12 @@ class Perfil extends Component {
         window.scroll(0, 0)
     }
     render() {
+        const {applications} = this.state
         return (
             <div>
                 <PerfilDisplay
+                    applications={applications}
+                    pay={this.pay}
                     isLogged={this.props.isLogged}
                     {...this.props.user}
                 />

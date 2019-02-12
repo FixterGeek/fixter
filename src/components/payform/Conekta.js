@@ -3,7 +3,7 @@ const script = document.createElement('script')
 class Conekta{
 	constructor(publicKey){
 		this.publicKey = publicKey || "key_Ik4WxMhXctrriTvyfMAimyg"
-		this.api;
+		this.api = null;
 		this.setInWindow();
 	}
 

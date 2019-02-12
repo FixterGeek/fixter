@@ -3,9 +3,11 @@ import {Link} from 'react-router-dom';
 import camp from '../../assets/bootcamp.png';
 import user from '../../assets/user.png';
 import { CardCampDisplay } from '../CardCamp/CardCampDisplay';
+import { AplicationCard } from './AplicationCard';
 import hooks from '../../assets/51565935_2358159057541818_2165592797782999040_o.jpg'
 
-export const PerfilDisplay = ({photoURL, displayName, email, isLogged, courses=[1]}) => {
+
+export const PerfilDisplay = ({photoURL, displayName, email, isLogged, applications=[], pay}) => {
 
     return (
         <div className="perfil">
@@ -42,8 +44,10 @@ export const PerfilDisplay = ({photoURL, displayName, email, isLogged, courses=[
                         </div>
                         <hr className="division"/>
                         <div>
-                            {courses.map((course, key)=>(
-                                <CardCampDisplay
+                            {applications.map((app, key)=>(
+                                <AplicationCard
+                                application={app}
+                                pay={pay}
                                 nombre="React Hooks + Firebase"
                                 descript="Aprenderás todo lo que necesitas sobre la programación de una aplicación web con JavaScript y ReactJs junto con su más reciente lanzamiento... Hooks. Además, aprenderás Firebase, un backend as a service de Google, usando principalmente su base de datos no relacional, teniendo con esto una aplicación fullstack completa sin tener que crear un backend en ningún otro lenguaje."
                                 imagen={hooks}

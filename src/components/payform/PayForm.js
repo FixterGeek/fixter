@@ -17,12 +17,27 @@ class PayForm extends Component {
 				period: "contado",
 				cvc: "",
 				phone: ""
-			}
+			},
+			isLogged: false,
+			user: {},
+			token: null
 		};
 		this.conekta = new Conekta()
 	}
 
-    componentDidMount () {
+	componentWillMount() {
+		let user = JSON.parse(localStorage.getItem("user"));
+		let token = localStorage.getItem("token");
+		let application = JSON.parse(localStorage.getItem('currentApplication'))
+		if (user) {
+			this.setState({ isLogged: true, user, token, application })
+		} else {
+			this.setState({ isLogged: false });
+			this.props.history.push("/login");
+		}
+	}
+
+	componentDidMount () {
         window.scroll(0, 0)
     }
 
@@ -82,23 +97,27 @@ class PayForm extends Component {
 
 
 	tokenize = () =>{
-		this.conekta.api.Token.create({card:this.state.card}, (conekta_obj) => {
+		const conektaSuccess = (conekta_obj) => {
 			const { period } = this.state.card;
+			const {token, application} = this.state;
 			let obj = {
 				token: conekta_obj.id,
-				period
+				period,
+				application
 			};
-			createOrder(obj)
+			createOrder(obj, token)
 				.then(res => {
 					toastr.success("Pago procesado con éxito");
 					this.history.push("/perfil");
 				})
 				.catch(err => toastr.error("Algo salió mal"))
-		}) ,
-			(err)=> {
-				console.error(err);
-				toastr.error("Algo salió mal")
-			}
+		};
+		const conektaError = (err)=> {
+			console.error(err);
+			toastr.error("Algo salió mal")
+		};
+		// creando el token de conekta
+		this.conekta.api.Token.create({card:this.state.card}, conektaSuccess, conektaError)
 	};
 
 	handlePayment = e => {
@@ -109,7 +128,8 @@ class PayForm extends Component {
 	};
 
     render() {
-    	const {number, exp_date, name, cupon, phone, cvc} = this.state.card;
+		const {number, exp_date, name, cupon, phone, cvc} = this.state.card;
+		const {application} = this.state
         return (
             <div className="pay">
 
@@ -222,7 +242,7 @@ class PayForm extends Component {
                             <span><input className="check" type="checkbox" placeholder="" required data-validation-required-message="Debes aceptar términos y condiciones"/>Acepto terminos y Condiciones</span>
                         </div>
                         <br/>
-                        <button type="submit" className="btn_start">Pagar $6,000.00</button>
+                        <button type="submit" className="btn_start">Pagar ${application.cost}</button>
                     </form>
                 </div>
             </div>
