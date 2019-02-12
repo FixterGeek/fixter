@@ -87,6 +87,7 @@ export const AplyForm = ({
 									{courses &&
 										courses.map(course => (
 											<option
+												selected
 												key={course._id}
 												value={course.title}
 											>
@@ -99,8 +100,8 @@ export const AplyForm = ({
 						<div className="formgroup">
 							<div className="option">
 								<textarea
-									rows="5"
-									className="formcontrol"
+									//rows="50"
+									className="inp"
 									name="comments"
 									onChange={onChangeAply}
 									placeholder="¿Tienes alguna duda o comentarios?"
