@@ -59,7 +59,7 @@ export default function NavDisplay(props) {
 									providerData[0].providerId !==
 										"facebook.com"
 										? photoURL
-										: "http://pngimages.net/sites/default/files/user-png-image-3003.png"
+										: "/static/media/user.76654c1c.png"
 								}
 								alt=""
 							/>

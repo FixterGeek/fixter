@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const url = "https://fixtercamp.herokuapp.com";
 
-class Perfil extends Component {
+class Perfil extends Component {	
 
     state = {
         isLogged: false,
@@ -49,15 +49,15 @@ class Perfil extends Component {
         window.scroll(0, 0)
     }
     render() {
-        const {applications} = this.state
+        const {applications, user} = this.state
         return (
             <div>
                 <PerfilDisplay
                     applications={applications}
                     pay={this.pay}
-                    isLogged={this.props.isLogged}
-                    {...this.props.user}
+                    isLogged={this.props.isLogged} {...user} 
                 />
+
             </div>
         );
     }
