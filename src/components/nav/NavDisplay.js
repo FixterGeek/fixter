@@ -17,6 +17,13 @@ export default function NavDisplay(props) {
 		localStorage.removeItem("user");
 		localStorage.removeItem("token");
 		firebase.auth().signOut();
+		window.location.reload();
+		// .then(function() {
+		// 	console.log("Cerré sesión alv");
+		// })
+		// .catch(function(error) {
+		// 	console.log(error);
+		// });
 	}
 	let { photoURL, providerData } = user || {};
 	//console.log(providerData[0].providerId);

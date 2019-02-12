@@ -49,7 +49,7 @@ class Login extends Component {
 			.then(result => {
 				this.saveSocialToken(result);
 				if (!result.user) return;
-				console.log(result.user);
+				//console.log(result.user);
 				localStorage.setItem("user", JSON.stringify(result.user));
 				//this.props.loginAction(result.user);
 				let { next } = queryString.parse(
