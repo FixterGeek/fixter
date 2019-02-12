@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/geek_completo.png";
+import firebase from "../../firebase";
 //import user from "../../assets/user.png";
 import "./Nav.css";
 
@@ -15,10 +16,10 @@ export default function NavDisplay(props) {
 	function signOut() {
 		localStorage.removeItem("user");
 		localStorage.removeItem("token");
+		firebase.auth().signOut();
 	}
-
-	let { photoURL } = user || {};
-	//console.log(photoURL);
+	let { photoURL, providerData } = user || {};
+	//console.log(providerData[0].providerId);
 	return (
 		<div className="nav-bar">
 			<div className="logo">
@@ -47,7 +48,9 @@ export default function NavDisplay(props) {
 							<img
 								className="userphoto"
 								src={
-									photoURL ||
+									(photoURL &&
+										providerData[0].providerId !==
+											"facebook.com") ||
 									"http://pngimages.net/sites/default/files/user-png-image-3003.png"
 								}
 								alt=""
