@@ -14,7 +14,7 @@ class PayForm extends Component {
 				name: "",
 				number: "",
 				exp_date: "",
-				period: "contado",
+				plazo: "contado",
 				cvc: "",
 				phone: ""
 			},
@@ -98,11 +98,11 @@ class PayForm extends Component {
 
 	tokenize = () =>{
 		const conektaSuccess = (conekta_obj) => {
-			const { period } = this.state.card;
+			const { plazo } = this.state.card;
 			const {token, application} = this.state;
 			let obj = {
 				token: conekta_obj.id,
-				period,
+				plazo,
 				application
 			};
 			createOrder(obj, token)
@@ -224,7 +224,7 @@ class PayForm extends Component {
                                 <p className="nombre_input" htmlFor="">Opciones de pago</p>
                                 <div className="inp_tarjeta">
 
-                                        <select name="period" onChange={this.handleInputs} className='select' id="period" required data-validation-required-message="Selecciona como quieres pagar">
+                                        <select name="plazo" onChange={this.handleInputs} className='select' id="plazo" required data-validation-required-message="Selecciona como quieres pagar">
                                             <option  default value="Método" disabled>Opciones de pago</option>
                                             <option value="contado">Contado</option>
                                             <option value="3">3 meses sin intereses</option>

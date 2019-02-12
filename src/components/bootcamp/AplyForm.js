@@ -12,7 +12,6 @@ export const AplyForm = ({
 	razon,
 	courses
 }) => {
-	console.log(courses)
 	return (
 		<div>
 			<div className="aplicacion">

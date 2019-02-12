@@ -42,7 +42,7 @@ class Aply extends Component {
 		let newAply = this.state.newAply;
 		const field = e.target.name;
 		const value = e.target.value;
-		console.log(value)
+		console.log(typeof value, Object(value))
 		newAply[field] = value;
 		this.setState({ newAply });
 	};
