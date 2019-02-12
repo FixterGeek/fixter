@@ -2,8 +2,10 @@
 import {Link} from 'react-router-dom';
 import camp from '../../assets/bootcamp.png';
 import user from '../../assets/user.png';
+import { CardCampDisplay } from '../CardCamp/CardCampDisplay';
+import hooks from '../../assets/51565935_2358159057541818_2165592797782999040_o.jpg'
 
-export const PerfilDisplay = ({photoURL, displayName, email, isLogged}) => {
+export const PerfilDisplay = ({photoURL, displayName, email, isLogged, courses=[1]}) => {
 
     return (
         <div className="perfil">
@@ -33,12 +35,31 @@ export const PerfilDisplay = ({photoURL, displayName, email, isLogged}) => {
                 <div className="perfil_progress">
                     <div>
                         <div style={{display:"flex"}}>
-                        <h2>Bootcamp</h2>
-                        <Link to="/aply">
-                            <button style={{marginTop:"20px", marginLeft:"10px"}} className="btn_pay">Aplicar</button>
-                        </Link></div>
+                            <h2>Bootcamp</h2>
+                            <Link to="/aply">
+                                <button style={{marginTop:"20px", marginLeft:"10px"}} className="btn_pay">Aplicar</button>
+                            </Link>
+                        </div>
                         <hr className="division"/>
-                        <div className="box_courses">
+                        <div>
+                            {courses.map((course, key)=>(
+                                <CardCampDisplay
+                                nombre="React Hooks + Firebase"
+                                descript="Aprenderás todo lo que necesitas sobre la programación de una aplicación web con JavaScript y ReactJs junto con su más reciente lanzamiento... Hooks. Además, aprenderás Firebase, un backend as a service de Google, usando principalmente su base de datos no relacional, teniendo con esto una aplicación fullstack completa sin tener que crear un backend en ningún otro lenguaje."
+                                imagen={hooks}
+                                fecha="4 de Marzo"
+                                sabatino={true}
+                                dia2="Mar, Jue, Sab"
+                                horario2="7pm a 10pm y Sab 10am a 2pm"
+                                place="Cubic Idea"
+                                address="Jalapa 100, Roma Nte., CDMX"
+                                dia="Lun, Mier, Vie"
+                                horario="7:00 pm a 10:00 pm"
+                                precio="12,000.00"
+                            />
+                            ))}
+                        </div>
+                        {/* <div className="box_courses">
                             <div className="crs opacity">
                                 <img className="batches" src={camp} alt="camp"/>
                                 <p>Intro al código</p>
@@ -84,14 +105,14 @@ export const PerfilDisplay = ({photoURL, displayName, email, isLogged}) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div>
+                    </div> */}
+                    {/* <div>
                         <h2>Cursos</h2>
                         <hr className="division"/>
                         <div className="box_courses">
-                        </div>
+                    </div>*/}
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     );
