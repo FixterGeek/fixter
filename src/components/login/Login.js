@@ -3,8 +3,9 @@ import { LoginDisplay } from "./LoginDisplay";
 import { RegisterDisplay } from "./RegisterDisplay";
 import "./Login.css";
 import firebase from "../../firebase";
+import queryString from "query-string";
 //redux
-import { connect } from "react-redux";
+//import { connect } from "react-redux";
 //import { loginAction } from "../../redux/actions/userAction";
 
 //const url = "http://localhost:3000";
@@ -51,6 +52,10 @@ class Login extends Component {
 				console.log(result.user);
 				localStorage.setItem("user", JSON.stringify(result.user));
 				//this.props.loginAction(result.user);
+				let { next } = queryString.parse(
+					this.props.history.location.search
+				);
+				if (next) return this.props.history.push(next);
 				this.props.history.push("/perfil");
 			})
 			.catch(error => {

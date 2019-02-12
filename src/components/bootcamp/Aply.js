@@ -30,7 +30,8 @@ class Aply extends Component {
 			this.setState({ isLogged: true, user });
 		} else {
 			this.setState({ isLogged: false });
-			this.props.history.push("/login");
+			toastr.info("Debes iniciar sesión primero.");
+			this.props.history.push("/login?next=/aplicar");
 		}
 	}
 	componentDidMount() {
@@ -58,7 +59,11 @@ class Aply extends Component {
 		console.log(newAply);
 		if (this.validateForm()) {
 			axios
-				.post(url + "/apply", newAply)
+				.post(url + "/apply", newAply, {
+					headers: {
+						Authorization: localStorage.getItem("token")
+					}
+				})
 				.then(r => {
 					console.log(r);
 					toastr.success("¡Hemos recibido tu aplicación!");
