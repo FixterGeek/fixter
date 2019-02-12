@@ -46,9 +46,10 @@ export const PerfilDisplay = ({photoURL, displayName, email, isLogged, applicati
                         <div>
                             {applications.map((app, key)=>(
                                 <AplicationCard
+                                key={key}
                                 application={app}
                                 pay={pay}
-                                nombre="React Hooks + Firebase"
+                                nombre="React Hooks + Firebase" 
                                 descript="Aprenderás todo lo que necesitas sobre la programación de una aplicación web con JavaScript y ReactJs junto con su más reciente lanzamiento... Hooks. Además, aprenderás Firebase, un backend as a service de Google, usando principalmente su base de datos no relacional, teniendo con esto una aplicación fullstack completa sin tener que crear un backend en ningún otro lenguaje."
                                 imagen={hooks}
                                 fecha="4 de Marzo"

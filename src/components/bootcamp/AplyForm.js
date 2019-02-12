@@ -12,6 +12,7 @@ export const AplyForm = ({
 	razon,
 	courses
 }) => {
+	console.log(courses)
 	return (
 		<div>
 			<div className="aplicacion">
@@ -88,7 +89,7 @@ export const AplyForm = ({
 										courses.map(course => (
 											<option
 												key={course._id}
-												value={course.title}
+												value={course._id}
 											>
 												{course.title}
 											</option>

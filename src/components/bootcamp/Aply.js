@@ -22,7 +22,7 @@ class Aply extends Component {
 		errors: {},
 		newAply: {},
 		aplys: [],
-		courses: [{ _id: "", title: "Hooks + Firebase" }]
+		courses: [{ _id: "a568f9d7g45s000", title: "Hooks + Firebase" }]
 	};
 	componentWillMount() {
 		let user = localStorage.getItem("user");
@@ -42,6 +42,7 @@ class Aply extends Component {
 		let newAply = this.state.newAply;
 		const field = e.target.name;
 		const value = e.target.value;
+		console.log(value)
 		newAply[field] = value;
 		this.setState({ newAply });
 	};
