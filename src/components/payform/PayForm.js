@@ -14,7 +14,7 @@ class PayForm extends Component {
 				name: "",
 				number: "",
 				exp_date: "",
-				period: "contado",
+				plazo: "contado",
 				cvc: "",
 				phone: ""
 			},
@@ -28,8 +28,9 @@ class PayForm extends Component {
 	componentWillMount() {
 		let user = JSON.parse(localStorage.getItem("user"));
 		let token = localStorage.getItem("token");
+		let application = JSON.parse(localStorage.getItem('currentApplication'))
 		if (user) {
-			this.setState({ isLogged: true, user, token })
+			this.setState({ isLogged: true, user, token, application })
 		} else {
 			this.setState({ isLogged: false });
 			this.props.history.push("/login");
@@ -97,18 +98,22 @@ class PayForm extends Component {
 
 	tokenize = () =>{
 		const conektaSuccess = (conekta_obj) => {
-			const { period } = this.state.card;
-			const {token} = this.state;
+			const { plazo } = this.state.card;
+			const {token, application} = this.state;
 			let obj = {
 				token: conekta_obj.id,
-				period
+				plazo,
+				application
 			};
 			createOrder(obj, token)
 				.then(res => {
 					toastr.success("Pago procesado con éxito");
 					this.history.push("/perfil");
 				})
-				.catch(err => toastr.error("Algo salió mal"))
+				.catch(err => {
+					console.log(err.response.data)
+					toastr.error("Algo salió mal")
+				})
 		};
 		const conektaError = (err)=> {
 			console.error(err);
@@ -126,7 +131,8 @@ class PayForm extends Component {
 	};
 
     render() {
-    	const {number, exp_date, name, cupon, phone, cvc} = this.state.card;
+		const {number, exp_date, name, cupon, phone, cvc} = this.state.card;
+		const {application} = this.state
         return (
             <div className="pay">
 
@@ -221,7 +227,7 @@ class PayForm extends Component {
                                 <p className="nombre_input" htmlFor="">Opciones de pago</p>
                                 <div className="inp_tarjeta">
 
-                                        <select name="period" onChange={this.handleInputs} className='select' id="period" required data-validation-required-message="Selecciona como quieres pagar">
+                                        <select name="plazo" onChange={this.handleInputs} className='select' id="plazo" required data-validation-required-message="Selecciona como quieres pagar">
                                             <option  default value="Método" disabled>Opciones de pago</option>
                                             <option value="contado">Contado</option>
                                             <option value="3">3 meses sin intereses</option>
@@ -239,7 +245,7 @@ class PayForm extends Component {
                             <span><input className="check" type="checkbox" placeholder="" required data-validation-required-message="Debes aceptar términos y condiciones"/>Acepto terminos y Condiciones</span>
                         </div>
                         <br/>
-                        <button type="submit" className="btn_start">Pagar $6,000.00</button>
+                        <button type="submit" className="btn_start">Pagar ${application.cost}</button>
                     </form>
                 </div>
             </div>

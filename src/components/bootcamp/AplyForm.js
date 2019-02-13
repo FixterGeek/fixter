@@ -8,7 +8,7 @@ export const AplyForm = ({
 	onChangeAply,
 	name,
 	email,
-	telefono,
+	tel,
 	razon,
 	courses
 }) => {
@@ -61,7 +61,7 @@ export const AplyForm = ({
 								<FontAwesome name="user" />
 								<input
 									type="tel"
-									value={telefono}
+									value={tel}
 									onChange={onChangeAply}
 									name="tel"
 									className="formcontrol"
@@ -88,7 +88,7 @@ export const AplyForm = ({
 										courses.map(course => (
 											<option
 												key={course._id}
-												value={course.title}
+												value={course._id}
 											>
 												{course.title}
 											</option>
@@ -99,8 +99,8 @@ export const AplyForm = ({
 						<div className="formgroup">
 							<div className="option">
 								<textarea
-									rows="5"
-									className="formcontrol"
+									//rows="50"
+									className="inp"
 									name="comments"
 									onChange={onChangeAply}
 									placeholder="¿Tienes alguna duda o comentarios?"

@@ -3,12 +3,13 @@ import { LoginDisplay } from "./LoginDisplay";
 import { RegisterDisplay } from "./RegisterDisplay";
 import "./Login.css";
 import firebase from "../../firebase";
+import queryString from "query-string";
 //redux
-import { connect } from "react-redux";
+//import { connect } from "react-redux";
 //import { loginAction } from "../../redux/actions/userAction";
 
-//const url = "http://localhost:3000";
-const url = "https://fixtercamp.herokuapp.com";
+const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
+//const url = "https://fixtercamp.herokuapp.com";
 const codigos = {
 	"auth/wrong-password": "Tu contraseña es incorrecta",
 	"auth/email-already-in-use": "Este usuario ya esta registrado"
@@ -48,9 +49,13 @@ class Login extends Component {
 			.then(result => {
 				this.saveSocialToken(result);
 				if (!result.user) return;
-				console.log(result.user);
+				//console.log(result.user);
 				localStorage.setItem("user", JSON.stringify(result.user));
 				//this.props.loginAction(result.user);
+				let { next } = queryString.parse(
+					this.props.history.location.search
+				);
+				if (next) return this.props.history.push(next);
 				this.props.history.push("/perfil");
 			})
 			.catch(error => {
