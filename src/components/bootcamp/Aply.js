@@ -14,6 +14,7 @@ class Aply extends Component {
 			name: "",
 			email: "",
 			course:"",
+			cost: 0,
 			tel: ""
         },
         courses: []
@@ -53,7 +54,7 @@ class Aply extends Component {
     onSave = e => {
         e.preventDefault();
         let user = JSON.parse(localStorage.getItem("user"));
-        const { newAply } = this.state;
+		const { newAply } = this.state;
         if(user) newAply.user = user._id;
         if (this.validateForm()) {
 			axios

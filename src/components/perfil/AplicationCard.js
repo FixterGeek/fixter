@@ -10,7 +10,7 @@ export const AplicationCard = ({pay, application, nombre, descript, imagen, fech
         <div className="card" style={{minHeight:'inherit'}}>
             <div className="card_info">
                 <div>
-                <h2 className="name">{nombre}</h2>                
+                <h2 className="name">{nombre}</h2>
                 </div>
                 <div className="box_btn">
                     {/* <Link to="/recursos" disabled>
@@ -18,16 +18,15 @@ export const AplicationCard = ({pay, application, nombre, descript, imagen, fech
                     </Link> */}
 
                     <button disabled  className="btn_camp">Recursos</button>
-                    
-                    <button 
+
+                    {!application.paid ? <button
                         style={{marginLeft:"50px"}}
-                      className="btn_camp" 
-                      onClick={()=>pay(application)} 
-                      disabled={application.paid?true:false}><FontAwesome name="money" /> Pagar</button>
-                    
+                      className="btn_camp"
+                      onClick={()=>pay(application)} ><FontAwesome name="money" /> Pagar</button> : null}
+
                 </div>
             </div>
-            
+
             {/* <div className="card_img" style={{backgroundImage:`url("${imagen}")`}}>
                     <div className={`etiqueta ${sabatino ? 'course-large' : null}`}>
                         <div className="etq">
@@ -47,8 +46,8 @@ export const AplicationCard = ({pay, application, nombre, descript, imagen, fech
                             <p>Precio Promo</p>
                         </div>
                     </div>
-            </div> */}    
-            <hr className="division"/>        
+            </div> */}
+            <hr className="division"/>
         </div>
     );
 };

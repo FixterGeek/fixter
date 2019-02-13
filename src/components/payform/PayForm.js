@@ -90,6 +90,11 @@ class PayForm extends Component {
 
 
 	validateCard = (card) => {
+
+		if(!this.conekta.api.card.validateNumber(card.number)) toastr.error("Número de tarjeta inválido")
+		if(!this.conekta.api.card.validateExpirationDate(card.exp_month, card.exp_year)) toastr.error("Expiración de la tarjeta inválida")
+		if(!this.conekta.api.card.validateCVC(card.cvc)) toastr.error("Número de seguridad inválido")
+
 		return !!(this.conekta.api.card.validateNumber(card.number) &&
 			this.conekta.api.card.validateExpirationDate(card.exp_month, card.exp_year) &&
 			this.conekta.api.card.validateCVC(card.cvc));
@@ -108,15 +113,14 @@ class PayForm extends Component {
 			createOrder(obj, token)
 				.then(res => {
 					toastr.success("Pago procesado con éxito");
-					this.history.push("/perfil");
+					this.props.history.push("/perfil");
 				})
 				.catch(err => {
-					console.log(err.response)
 					toastr.error("Algo salió mal")
 				})
 		};
 		const conektaError = (err)=> {
-			toastr.error("Algo salió mal")
+			toastr.error("Error al procesar datos de pago, intenta más tarde")
 		};
 		// creando el token de conekta
 		this.conekta.api.Token.create({card:this.state.card}, conektaSuccess, conektaError)
