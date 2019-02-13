@@ -21,7 +21,8 @@ export const AplicationCard = ({pay, application, nombre, descript, imagen, fech
 
                     <button
                         style={{marginLeft:"50px"}}
-                      className={`btn_camp ${!application.paid ? null: 'payed'}`}
+					  className={`btn_camp ${!application.paid ? null: 'payed'}`}
+					  disabled={application.paid}
                       onClick={()=>pay(application)} >{!application.paid ? <FontAwesome name="money" /> : <FontAwesome name="check" /> }  {!application.paid ? "Pagar" : "Pagado"}</button>
 
                 </div>
