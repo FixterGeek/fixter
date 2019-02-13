@@ -42,7 +42,7 @@ class PayForm extends Component {
     }
 
 	handleInputs = e => {
-		const {card} = this.state;
+		const { card } = this.state;
 		let field = e.target.name;
 		if(field === "number") {
 			let trimmed = e.target.value.replace(/\s+/g, '');
@@ -101,7 +101,7 @@ class PayForm extends Component {
 			const { plazo } = this.state.card;
 			const {token, application} = this.state;
 			let obj = {
-				token: conekta_obj.id,
+				conektaToken: conekta_obj.id,
 				plazo,
 				application
 			};
@@ -111,12 +111,11 @@ class PayForm extends Component {
 					this.history.push("/perfil");
 				})
 				.catch(err => {
-					console.log(err.response.data)
+					console.log(err.response)
 					toastr.error("Algo salió mal")
 				})
 		};
 		const conektaError = (err)=> {
-			console.error(err);
 			toastr.error("Algo salió mal")
 		};
 		// creando el token de conekta

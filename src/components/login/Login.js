@@ -8,8 +8,8 @@ import queryString from "query-string";
 //import { connect } from "react-redux";
 //import { loginAction } from "../../redux/actions/userAction";
 
-const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
-//const url = "https://fixtercamp.herokuapp.com";
+//const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
+const url = "https://fixtercamp.herokuapp.com";
 const codigos = {
 	"auth/wrong-password": "Tu contraseña es incorrecta",
 	"auth/email-already-in-use": "Este usuario ya esta registrado"
