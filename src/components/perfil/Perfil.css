@@ -5,6 +5,9 @@
     padding-top: 120px;
     padding-bottom: 50px;
 }
+.payed{
+	background-color: rgb(40,228,160) !important
+}
 .profile{
     width:80%;
     height:auto;
