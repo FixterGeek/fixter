@@ -2,7 +2,7 @@ const script = document.createElement('script')
 
 class Conekta{
 	constructor(publicKey){
-		this.publicKey = publicKey || "key_Ik4WxMhXctrriTvyfMAimyg"
+		this.publicKey = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_CONEKTA_CLIENT_ID_PRODUCTION : process.env.REACT_APP_CONEKTA_CLIENT_ID_DEV;
 		this.api = null;
 		this.setInWindow();
 	}
