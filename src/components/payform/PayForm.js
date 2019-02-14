@@ -36,6 +36,22 @@ class PayForm extends Component {
 			this.setState({ isLogged: false });
 			this.props.history.push("/login");
 		}
+		toastr.options = {
+			"closeButton": true,
+			"debug": false,
+			"newestOnTop": false,
+			"progressBar": false,
+			"preventDuplicates": false,
+			"onclick": null,
+			"showDuration": "0",
+			"hideDuration": "0",
+			"timeOut": "0",
+			"extendedTimeOut": "0",
+			"showEasing": "swing",
+			"hideEasing": "linear",
+			"showMethod": "fadeIn",
+			"hideMethod": "fadeOut"
+		  }
 	}
 
 	componentDidMount () {
@@ -255,7 +271,7 @@ class PayForm extends Component {
                             <span><input className="check" type="checkbox" placeholder="" required data-validation-required-message="Debes aceptar términos y condiciones"/>Acepto terminos y Condiciones</span>
                         </div>
                         <br/>
-                        <button type="submit" className="btn_start" disabled={loading}>{loading ? "Procesando..." : `Pagar ${application.cost}`}</button>
+                        <button type="submit" className="btn_start" disabled={loading}>{loading ? "Procesando..." : `Pagar $${application.cost}`}</button>
                     </form>
                 </div>
             </div>

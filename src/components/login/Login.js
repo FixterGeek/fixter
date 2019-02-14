@@ -79,7 +79,7 @@ class Login extends Component {
 	};
 
 	loginWithExpressGoogle = token => {
-		console.log(token);
+
 		fetch(url + "/login/google/token", {
 			method: "post",
 			body: JSON.stringify({ access_token: token }),
@@ -111,7 +111,7 @@ class Login extends Component {
 			})
 			.then(r => {
 				localStorage.setItem("token", r.token);
-				console.log(r);
+
 			});
 	};
 
@@ -158,7 +158,6 @@ class Login extends Component {
 				return response.json();
 			})
 			.then(r => {
-				console.log(r);
 				if (r.message) return this.setState({ error: r.message });
 				localStorage.setItem("token", r.token);
 				localStorage.setItem("user", JSON.stringify(r.user));
