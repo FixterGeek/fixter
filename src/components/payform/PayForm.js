@@ -118,7 +118,7 @@ class PayForm extends Component {
 					this.props.history.push("/perfil");
 				})
 				.catch(err => {
-					console.log("back", err)
+					console.log("back", err.response)
 					toastr.error("Algo salió mal")
 					this.setState({loading: false})
 				})
