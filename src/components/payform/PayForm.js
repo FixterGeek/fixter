@@ -118,13 +118,11 @@ class PayForm extends Component {
 					this.props.history.push("/perfil");
 				})
 				.catch(err => {
-					console.log("back", err.response)
-					toastr.error("Algo salió mal")
+					err.response.data.detaild.forEach(e=> toastr.error(`${e.message}`))
 					this.setState({loading: false})
 				})
 		};
 		const conektaError = (err)=> {
-			console.log("conekta",err)
 			this.setState({loading: false})
 			toastr.error("Error al procesar datos de pago, intenta más tarde")
 		};
