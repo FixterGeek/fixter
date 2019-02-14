@@ -18,6 +18,7 @@ class PayForm extends Component {
 				cvc: "",
 				phone: ""
 			},
+			loading: false,
 			isLogged: false,
 			user: {},
 			token: null
@@ -113,13 +114,18 @@ class PayForm extends Component {
 			createOrder(obj, token)
 				.then(res => {
 					toastr.success("Pago procesado con éxito");
+					this.setState({loading: false})
 					this.props.history.push("/perfil");
 				})
 				.catch(err => {
+					console.log("back", err)
 					toastr.error("Algo salió mal")
+					this.setState({loading: false})
 				})
 		};
 		const conektaError = (err)=> {
+			console.log("conekta",err)
+			this.setState({loading: false})
 			toastr.error("Error al procesar datos de pago, intenta más tarde")
 		};
 		// creando el token de conekta
@@ -128,14 +134,17 @@ class PayForm extends Component {
 
 	handlePayment = e => {
 		e.preventDefault();
+		this.setState({loading: true})
 		if (this.validateCard(this.state.card)){
 			this.tokenize();
+		}else{
+			this.setState({loading: false})
 		}
 	};
 
     render() {
 		const {number, exp_date, name, cupon, phone, cvc} = this.state.card;
-		const {application} = this.state
+		const {application, loading} = this.state
         return (
             <div className="pay">
 
@@ -248,7 +257,7 @@ class PayForm extends Component {
                             <span><input className="check" type="checkbox" placeholder="" required data-validation-required-message="Debes aceptar términos y condiciones"/>Acepto terminos y Condiciones</span>
                         </div>
                         <br/>
-                        <button type="submit" className="btn_start">Pagar ${application.cost}</button>
+                        <button type="submit" className="btn_start" disabled={loading}>{loading ? "Procesando..." : `Pagar ${application.cost}`}</button>
                     </form>
                 </div>
             </div>
