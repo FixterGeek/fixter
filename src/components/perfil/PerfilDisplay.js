@@ -23,16 +23,6 @@ export const PerfilDisplay = ({photoURL, displayName, email, isLogged, applicati
                             <p>recientemente</p>
                         </div>
                     </div>
-                    <div className="data_suscript">
-                        <p>Suscripción</p>
-                        <hr className="division"/>
-                        <div className="pay_box">
-                            <p>Bootcamp</p>
-                            <Link to="/pay">
-                                <button className="btn_pay">Pagar</button>
-                            </Link>
-                        </div>
-                    </div>
                 </div>
                 <div className="perfil_progress">
                     <div>
@@ -49,7 +39,7 @@ export const PerfilDisplay = ({photoURL, displayName, email, isLogged, applicati
                                 key={key}
                                 application={app}
                                 pay={pay}
-                                nombre="React Hooks + Firebase" 
+                                nombre="React Hooks + Firebase"
                                 descript="Aprenderás todo lo que necesitas sobre la programación de una aplicación web con JavaScript y ReactJs junto con su más reciente lanzamiento... Hooks. Además, aprenderás Firebase, un backend as a service de Google, usando principalmente su base de datos no relacional, teniendo con esto una aplicación fullstack completa sin tener que crear un backend en ningún otro lenguaje."
                                 imagen={hooks}
                                 fecha="4 de Marzo"
@@ -117,7 +107,7 @@ export const PerfilDisplay = ({photoURL, displayName, email, isLogged, applicati
                         <div className="box_courses">
                     </div>*/}
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     );
