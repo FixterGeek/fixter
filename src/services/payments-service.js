@@ -1,15 +1,14 @@
 import axios from 'axios';
 
-const base_url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
+const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
 
-const url = "https://fixtercamp.herokuapp.com"
+//const url = "https://fixtercamp.herokuapp.com"
 
 export  const createOrder = (obj, token) => {
 	const HEADERS = {
 		headers: {
-			"Authorization": token,
-			'ContentType':'appplication/json'
+			"Authorization": token
 		}
 	};
-	return axios.post(`${url}/payments/conekta`, obj, HEADERS)
+	return axios.post(`${url}/pay`, obj, HEADERS)
 };

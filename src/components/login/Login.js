@@ -9,8 +9,8 @@ import axios from "axios";
 //import { connect } from "react-redux";
 //import { loginAction } from "../../redux/actions/userAction";
 
-const url = "http://localhost:3000";
-//const url = "https://fixtercamp.herokuapp.com";
+//const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
+const url = "https://fixtercamp.herokuapp.com";
 const codigos = {
 	"auth/wrong-password": "Tu contraseña es incorrecta",
 	"auth/email-already-in-use": "Este usuario ya esta registrado"
@@ -84,7 +84,7 @@ class Login extends Component {
 		axios
 			.post(url + "/login/google/token", { access_token: token })
 			.then(r => {
-				console.log(r);
+				//console.log(r);
 				localStorage.setItem("token", r.data.token);
 				const user = JSON.parse(localStorage.getItem("user"));
 				user.role = r.data.user.role;
@@ -105,7 +105,6 @@ class Login extends Component {
 			})
 			.then(r => {
 				localStorage.setItem("token", r.token);
-				console.log(r);
 			});
 	};
 
@@ -139,7 +138,7 @@ class Login extends Component {
 	onLogin = e => {
 		e.preventDefault();
 		const { login } = this.state;
-		console.log(login);
+		//console.log(login);
 		fetch(url + "/login", {
 			method: "post",
 			headers: {
@@ -152,7 +151,6 @@ class Login extends Component {
 				return response.json();
 			})
 			.then(r => {
-				console.log(r);
 				if (r.message) return this.setState({ error: r.message });
 				localStorage.setItem("token", r.token);
 				localStorage.setItem("user", JSON.stringify(r.user));

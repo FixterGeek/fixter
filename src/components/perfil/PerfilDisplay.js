@@ -23,16 +23,6 @@ export const PerfilDisplay = ({photoURL, displayName, email, isLogged, applicati
                             <p>recientemente</p>
                         </div>
                     </div>
-                    <div className="data_suscript">
-                        <p>Suscripción</p>
-                        <hr className="division"/>
-                        <div className="pay_box">
-                            <p>Bootcamp</p>
-                            <Link to="/pay">
-                                <button className="btn_pay">Pagar</button>
-                            </Link>
-                        </div>
-                    </div>
                 </div>
                 <div className="perfil_progress">
                     <div>
@@ -46,6 +36,7 @@ export const PerfilDisplay = ({photoURL, displayName, email, isLogged, applicati
                         <div>
                             {applications.map((app, key)=>(
                                 <AplicationCard
+                                key={key}
                                 application={app}
                                 pay={pay}
                                 nombre="React Hooks + Firebase"
@@ -116,7 +107,7 @@ export const PerfilDisplay = ({photoURL, displayName, email, isLogged, applicati
                         <div className="box_courses">
                     </div>*/}
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     );

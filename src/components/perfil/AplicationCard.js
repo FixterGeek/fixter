@@ -7,25 +7,28 @@ import '../CardCamp/CardCamp.css';
 export const AplicationCard = ({pay, application, nombre, descript, imagen, fecha, precio, temario, horario, dia, place, address, dia2, horario2, sabatino}) => {
 
     return (
-        <div className="card">
+        <div className="card" style={{minHeight:'inherit'}}>
             <div className="card_info">
-                <div style={{minHeight:"65%"}}>
+                <div>
                 <h2 className="name">{nombre}</h2>
-                <p>{descript}</p>
                 </div>
                 <div className="box_btn">
-                    <Link to="/recursos">
+                    {/* <Link to="/recursos" disabled>
                         <button style={{marginLeft:"20px"}} className="btn_camp">Recursos</button>
-                    </Link>
-                    
-                    <button 
-                      className="btn_camp" 
-                      onClick={()=>pay(application)} 
-                      disabled={application.paid?true:false}><FontAwesome name="money" /> Pagar</button>
-                    
+                    </Link> */}
+
+                    <button disabled  className="btn_camp">Recursos</button>
+
+                    <button
+                        style={{marginLeft:"50px"}}
+					  className={`btn_camp ${!application.paid ? null: 'payed'}`}
+					  disabled={application.paid}
+                      onClick={()=>pay(application)} >{!application.paid ? <FontAwesome name="money" /> : <FontAwesome name="check" /> }  {!application.paid ? "Pagar" : "Pagado"}</button>
+
                 </div>
             </div>
-            <div className="card_img" style={{backgroundImage:`url("${imagen}")`}}>
+
+            {/* <div className="card_img" style={{backgroundImage:`url("${imagen}")`}}>
                     <div className={`etiqueta ${sabatino ? 'course-large' : null}`}>
                         <div className="etq">
                             <FontAwesome name="clock-o" size="2x"/>
@@ -44,7 +47,8 @@ export const AplicationCard = ({pay, application, nombre, descript, imagen, fech
                             <p>Precio Promo</p>
                         </div>
                     </div>
-            </div>
+            </div> */}
+            <hr className="division"/>
         </div>
     );
 };

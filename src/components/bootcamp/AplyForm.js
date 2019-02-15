@@ -8,7 +8,7 @@ export const AplyForm = ({
 	onChangeAply,
 	name,
 	email,
-	telefono,
+	tel,
 	razon,
 	courses
 }) => {
@@ -61,7 +61,7 @@ export const AplyForm = ({
 								<FontAwesome name="user" />
 								<input
 									type="tel"
-									value={telefono}
+									value={tel}
 									onChange={onChangeAply}
 									name="tel"
 									className="formcontrol"
@@ -87,9 +87,8 @@ export const AplyForm = ({
 									{courses &&
 										courses.map(course => (
 											<option
-												selected
 												key={course._id}
-												value={course.title}
+												value={course._id}
 											>
 												{course.title}
 											</option>
@@ -119,48 +118,4 @@ export const AplyForm = ({
 			</div>
 		</div>
 	);
-	// =======
-
-	// export const AplyForm = ({ onSave, errors, onChangeAply, name, email, telefono, razon, courses }) => {
-	// 	console.log(name, email, telefono)
-	//     return (
-	//         <div >
-	//             <div className="aplicacion">
-	//                 <div className="card_form">
-	//                     <h2>Inscribete a nuestro Bootcamp ahora</h2>
-	//                     <hr className="division" />
-	//                     <form onSubmit={onSave} method="post" name="sentMessage" action="">
-	//                         <div className="formgroup">
-	//                             <div className="inp">
-	//                                 <FontAwesome name="user" />
-	//                                 <input type="text" value={name} onChange={onChangeAply} name="name" className="formcontrol" placeholder="Nombre" required data-validation-required-message="Porfavor ingresa tu nombre" />
-	//                                 <p className="help-block text-danger"></p></div>
-	//                         </div>
-	//                         <div className="formgroup">
-	//                             <div className="inp">
-	//                                 <FontAwesome name="envelope" />
-	//                                 <input type="email" value={email} onChange={onChangeAply} name="email" className="formcontrol" placeholder="E-mail" required data-validation-required-message="Porfavor ingresa tu e-mail" />
-	//                                 <p className="help-block text-danger"></p></div>
-	//                         </div>
-	//                         <div className="formgroup">
-	//                             <div className="inp">
-	//                                 <FontAwesome name="user" />
-	//                                 <input type="tel" value={telefono} onChange={onChangeAply} name="telefono" className="formcontrol" placeholder="Teléfono" id="phone" required data-validation-required-message="Porfavor ingresa tu numero telefonico" />
-	//                                 <p className="help-block text-danger"></p></div>
-	//                         </div>
-	//                         <div className="formgroup">
-	//                             <div className='option'>
-	//                                 <select name="course" onChange={onChangeAply} type="text" className='icon' id="name" data-validation-required-message="Please complete">
-	//                                     <option>Selecciona un curso..</option>
-	//                                     {courses && courses.map(course => <option key={course._id} value={course._id}>{course.title}</option>)}
-	//                                 </select>
-	//                             </div>
-	//                         </div>
-	//                         <button type="submit" className="btn_start margin-small-top">Enviar</button>
-	//                     </form>
-	//                 </div>
-	//             </div>
-	//         </div>
-	//     );
-	// >>>>>>> f4f9f93fa06538736c0726a3b4a581ba602f7111
 };

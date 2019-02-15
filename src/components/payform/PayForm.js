@@ -14,10 +14,11 @@ class PayForm extends Component {
 				name: "",
 				number: "",
 				exp_date: "",
-				period: "contado",
+				plazo: "contado",
 				cvc: "",
 				phone: ""
 			},
+			loading: false,
 			isLogged: false,
 			user: {},
 			token: null
@@ -35,6 +36,22 @@ class PayForm extends Component {
 			this.setState({ isLogged: false });
 			this.props.history.push("/login");
 		}
+		toastr.options = {
+			"closeButton": true,
+			"debug": false,
+			"newestOnTop": false,
+			"progressBar": false,
+			"preventDuplicates": false,
+			"onclick": null,
+			"showDuration": "0",
+			"hideDuration": "0",
+			"timeOut": "0",
+			"extendedTimeOut": "0",
+			"showEasing": "swing",
+			"hideEasing": "linear",
+			"showMethod": "fadeIn",
+			"hideMethod": "fadeOut"
+		  }
 	}
 
 	componentDidMount () {
@@ -42,7 +59,7 @@ class PayForm extends Component {
     }
 
 	handleInputs = e => {
-		const {card} = this.state;
+		const { card } = this.state;
 		let field = e.target.name;
 		if(field === "number") {
 			let trimmed = e.target.value.replace(/\s+/g, '');
@@ -90,6 +107,11 @@ class PayForm extends Component {
 
 
 	validateCard = (card) => {
+
+		if(!this.conekta.api.card.validateNumber(card.number)) toastr.error("Número de tarjeta inválido")
+		if(!this.conekta.api.card.validateExpirationDate(card.exp_month, card.exp_year)) toastr.error("Expiración de la tarjeta inválida")
+		if(!this.conekta.api.card.validateCVC(card.cvc)) toastr.error("Número de seguridad inválido")
+
 		return !!(this.conekta.api.card.validateNumber(card.number) &&
 			this.conekta.api.card.validateExpirationDate(card.exp_month, card.exp_year) &&
 			this.conekta.api.card.validateCVC(card.cvc));
@@ -98,23 +120,27 @@ class PayForm extends Component {
 
 	tokenize = () =>{
 		const conektaSuccess = (conekta_obj) => {
-			const { period } = this.state.card;
+			const { plazo } = this.state.card;
 			const {token, application} = this.state;
 			let obj = {
-				token: conekta_obj.id,
-				period,
+				conektaToken: conekta_obj.id,
+				plazo,
 				application
 			};
 			createOrder(obj, token)
 				.then(res => {
 					toastr.success("Pago procesado con éxito");
-					this.history.push("/perfil");
+					this.setState({loading: false})
+					this.props.history.push("/perfil");
 				})
-				.catch(err => toastr.error("Algo salió mal"))
+				.catch(err => {
+					err.response.data.details.forEach(e=> toastr.error(`${e.message}`))
+					this.setState({loading: false})
+				})
 		};
 		const conektaError = (err)=> {
-			console.error(err);
-			toastr.error("Algo salió mal")
+			this.setState({loading: false})
+			toastr.error("Error al procesar datos de pago, intenta más tarde")
 		};
 		// creando el token de conekta
 		this.conekta.api.Token.create({card:this.state.card}, conektaSuccess, conektaError)
@@ -122,14 +148,17 @@ class PayForm extends Component {
 
 	handlePayment = e => {
 		e.preventDefault();
+		this.setState({loading: true})
 		if (this.validateCard(this.state.card)){
 			this.tokenize();
+		}else{
+			this.setState({loading: false})
 		}
 	};
 
     render() {
 		const {number, exp_date, name, cupon, phone, cvc} = this.state.card;
-		const {application} = this.state
+		const {application, loading} = this.state
         return (
             <div className="pay">
 
@@ -224,7 +253,7 @@ class PayForm extends Component {
                                 <p className="nombre_input" htmlFor="">Opciones de pago</p>
                                 <div className="inp_tarjeta">
 
-                                        <select name="period" onChange={this.handleInputs} className='select' id="period" required data-validation-required-message="Selecciona como quieres pagar">
+                                        <select name="plazo" onChange={this.handleInputs} className='select' id="plazo" required data-validation-required-message="Selecciona como quieres pagar">
                                             <option  default value="Método" disabled>Opciones de pago</option>
                                             <option value="contado">Contado</option>
                                             <option value="3">3 meses sin intereses</option>
@@ -242,7 +271,7 @@ class PayForm extends Component {
                             <span><input className="check" type="checkbox" placeholder="" required data-validation-required-message="Debes aceptar términos y condiciones"/>Acepto terminos y Condiciones</span>
                         </div>
                         <br/>
-                        <button type="submit" className="btn_start">Pagar ${application.cost}</button>
+                        <button type="submit" className="btn_start" disabled={loading}>{loading ? "Procesando..." : `Pagar $${application.cost}`}</button>
                     </form>
                 </div>
             </div>
