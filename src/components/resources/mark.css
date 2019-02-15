@@ -1,0 +1,38 @@
+.mark-container {
+	width: 80%;
+	margin: 0 auto;
+	font-family: Avenir;
+	font-size: 1.2rem;
+}
+
+.mark-container img {
+	max-width: 100%;
+}
+
+.mark-container a {
+	color: orange;
+	text-decoration: underline;
+}
+
+.mark-container blockquote {
+	background: #f9f9f9;
+	border-left: 10px solid #ccc;
+	margin: 1.5em 10px;
+	padding: 0.5em 10px;
+	quotes: "\201C""\201D""\2018""\2019";
+}
+.mark-container blockquote:before {
+	color: #ccc;
+	content: open-quote;
+	font-size: 4em;
+	line-height: 0.1em;
+	margin-right: 0.25em;
+	vertical-align: -0.4em;
+}
+.mark-container blockquote p {
+	display: inline;
+}
+
+/* .mark-container code.language-html {
+	color: red;
+} */

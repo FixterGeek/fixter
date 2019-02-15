@@ -4,12 +4,13 @@ import { RegisterDisplay } from "./RegisterDisplay";
 import "./Login.css";
 import firebase from "../../firebase";
 import queryString from "query-string";
+import axios from "axios";
 //redux
 //import { connect } from "react-redux";
 //import { loginAction } from "../../redux/actions/userAction";
 
-//const url = "http://localhost:3000";
-const url = "https://fixtercamp.herokuapp.com";
+const url = "http://localhost:3000";
+//const url = "https://fixtercamp.herokuapp.com";
 const codigos = {
 	"auth/wrong-password": "Tu contraseña es incorrecta",
 	"auth/email-already-in-use": "Este usuario ya esta registrado"
@@ -79,21 +80,14 @@ class Login extends Component {
 	};
 
 	loginWithExpressGoogle = token => {
-		console.log(token);
-		fetch(url + "/login/google/token", {
-			method: "post",
-			body: JSON.stringify({ access_token: token }),
-			headers: {
-				"Content-Type": "application/json"
-			}
-		})
-			.then(response => {
-				if (response.ok) return response.json();
-			})
+		//console.log(token);
+		axios
+			.post(url + "/login/google/token", { access_token: token })
 			.then(r => {
-				localStorage.setItem("token", r.token);
+				console.log(r);
+				localStorage.setItem("token", r.data.token);
 				const user = JSON.parse(localStorage.getItem("user"));
-				user.role = r.user.role;
+				user.role = r.data.user.role;
 				localStorage.setItem("user", JSON.stringify(user));
 			});
 	};
