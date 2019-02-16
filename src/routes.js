@@ -13,6 +13,7 @@ import Politicas from "./components/politicas/Politicas";
 import AdminHome from "./components/admin/adminHome/AdminHome";
 import AddCourse from "./components/admin/courses/AddCourse";
 import CourseDetail from "./components/resources/CourseDetail";
+import Modules from './components/resources/Modules';
 
 export const Routes = () => (
 	<Switch>
@@ -24,7 +25,8 @@ export const Routes = () => (
 		<Route path="/aplicar" component={Aply} />
 		<Route path="/login" component={Login} />
 		<Route path="/pay" component={PayForm} />
-		<Route path="/cursos/:slug" component={CourseDetail} />
+		<Route exact path="/cursos/:slug" component={Modules} />
+		<Route exact path="/cursos/:slug/:lesson" component={CourseDetail} />
 		<Route path="/cursos" component={CursosConteiner} />
 		<Route path="/contacto" component={Contacto} />
 		<Route path="/politicas-de-privacidad" component={Politicas} />

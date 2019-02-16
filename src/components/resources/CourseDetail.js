@@ -24,9 +24,11 @@ export default function(props) {
 				}
 			)
 			.then(res => {
-				console.log(res.data);
-				setSlug(res.data[3].name);
-				return axios(res.data[3].download_url);
+				const lesson = res.data.filter(item => {
+					return item.name.replace(/\s/g,'').split(".")[0] === props.match.params.lesson
+				});
+				setSlug(lesson[0].name);
+				return axios(lesson[0].download_url);
 				//setMd(res.data[0].download_url);
 				//location.replace(res.data[0].download_url);
 			})
@@ -44,7 +46,7 @@ export default function(props) {
 						code: CodeBlock
 					}}
 				/>
-				,
+
 			</section>
 		</div>
 	);
