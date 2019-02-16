@@ -3,7 +3,6 @@ import './Bootcamp.css';
 import bootcamp from '../../assets/bootc.png';
 import temario_edition from '../../assets/temarios/Reacjs hooks + firebase.pdf';
 import {CardCampDisplay} from '../CardCamp/CardCampDisplay';
-import hooks from '../../assets/51565935_2358159057541818_2165592797782999040_o.jpg'
 
 
 class Bootcamp extends Component {
@@ -23,7 +22,7 @@ class Bootcamp extends Component {
                     <CardCampDisplay
                         nombre="React Hooks + Firebase"
                         descript="Aprenderás todo lo que necesitas sobre la programación de una aplicación web con JavaScript y ReactJs junto con su más reciente lanzamiento... Hooks. Además, aprenderás Firebase, un backend as a service de Google, usando principalmente su base de datos no relacional, teniendo con esto una aplicación fullstack completa sin tener que crear un backend en ningún otro lenguaje."
-                        imagen={hooks}
+                        imagen="https://i.imgur.com/8hbDoO0.jpg"
                         fecha="4 de Marzo"
 						sabatino={true}
 						temario={temario_edition}
