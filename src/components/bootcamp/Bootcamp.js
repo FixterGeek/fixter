@@ -4,6 +4,7 @@ import bootcamp from '../../assets/bootc.png';
 import temario_edition from '../../assets/temarios/Reacjs hooks + firebase.pdf';
 import pachuca from  '../../assets/52265924_1560764037401880_6264642566415712256_n.png'
 import {CardCampDisplay} from '../CardCamp/CardCampDisplay';
+import temario_pachuca from '../../assets/temarios/Reacjs-firebase-Pachuca.pdf'
 
 
 class Bootcamp extends Component {
@@ -38,11 +39,11 @@ class Bootcamp extends Component {
                     />
 
 				   <CardCampDisplay
-					   nombre="React Hooks + Firebase Pachuca"
+					   nombre="React + Firebase Pachuca"
 					   descript="Aprenderás todo lo que necesitas sobre la programación de una aplicación web con JavaScript y ReactJs junto con su más reciente lanzamiento... Hooks. Además, aprenderás Firebase, un backend as a service de Google, usando principalmente su base de datos no relacional, teniendo con esto una aplicación fullstack completa sin tener que crear un backend en ningún otro lenguaje."
 					   imagen={pachuca}
 					   fecha="25 de Marzo"
-					   temario={temario_edition}
+					   temario={temario_pachuca}
 					   place="Peanut cowork"
 					   address="Av, Blvrd Nuevo Hidalgo 228, Puerta de Hierro, Pachuca de Soto, Hgo"
 					   dia="Lun, Mar y Mie"
