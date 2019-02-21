@@ -102,3 +102,8 @@
     width:inherit !important;
 
 }
+.descuento{
+	margin-top: 3% !important;
+	font-weight: bold;
+	color: #11B229;
+}

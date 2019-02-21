@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './PayForm.css';
 import Conekta from "./Conekta";
 import toastr from 'toastr';
-import {createOrder} from "../../services/payments-service";
+import {createOrder, checkCoupon} from "../../services/payments-service";
 
 class PayForm extends Component {
 
@@ -120,17 +120,18 @@ class PayForm extends Component {
 
 	tokenize = () =>{
 		const conektaSuccess = (conekta_obj) => {
-			const { plazo } = this.state.card;
+			const { plazo, cupon } = this.state.card;
 			const {token, application} = this.state;
 			let obj = {
 				conektaToken: conekta_obj.id,
 				plazo,
-				application
+				application,
 			};
+			if(cupon.valid) obj.cupon = cupon;
 			createOrder(obj, token)
 				.then(res => {
 					toastr.success("Pago procesado con éxito");
-					this.setState({loading: false})
+					this.setState({loading: false});
 					this.props.history.push("/perfil");
 				})
 				.catch(err => {
@@ -156,9 +157,32 @@ class PayForm extends Component {
 		}
 	};
 
+	checkCoupon = () => {
+		const { cupon } = this.state.card;
+		const {token} = this.state;
+		checkCoupon(cupon, token)
+			.then(res => {
+				const cupon = res.data;
+				toastr.success("Cupón valido");
+				this.setState({card:{cupon}}, ()=> console.log(this.state));
+			})
+			.catch(e => {
+				toastr.error(`${e.response.data.message}`);
+				console.error(e)
+			})
+	};
+
+	getCost = () => {
+		const {plazo, cupon} = this.state.card;
+		const {application} = this.state;
+		return plazo === "contado" && cupon.valid || plazo !== "contado" && cupon.valid ?
+				(application.cost * (1 - cupon.value/100)) : plazo === "contado" ?
+					(application.cost * .9) : application.cost
+	};
+
     render() {
 		const {number, exp_date, name, cupon, phone, cvc} = this.state.card;
-		const {application, loading} = this.state
+		const {loading} = this.state;
         return (
             <div className="pay">
 
@@ -171,12 +195,13 @@ class PayForm extends Component {
                             <div className="inp_cupon">
                                 <input type="text"
 									   name="cupon"
-									   value={cupon}
+									   value={cupon.valid ? cupon.name : cupon}
 									   onChange={this.handleInputs}
 									   className="formcontrol"
 									   placeholder="Ingresa el código de descuento"/>
                             </div>
-                            <button className="btn_cupon">Aplicar código de descuento</button>
+                            <button disabled={cupon.valid} className="btn_cupon" type="button" onClick={this.checkCoupon}>Aplicar código de descuento</button>
+							{cupon.valid ? <p className="descuento">Descuento: {cupon.value}%</p> : null}
                         </div>
                         <br/>
                         <p className="nombre_input" htmlFor="">Nombre del tarjetahabiente</p>
@@ -271,7 +296,7 @@ class PayForm extends Component {
                             <span><input className="check" type="checkbox" placeholder="" required data-validation-required-message="Debes aceptar términos y condiciones"/>Acepto terminos y Condiciones</span>
                         </div>
                         <br/>
-                        <button type="submit" className="btn_start" disabled={loading}>{loading ? "Procesando..." : `Pagar $${application.cost}`}</button>
+                        <button type="submit" className="btn_start" disabled={loading}>{loading ? "Procesando..." : `Pagar $${this.getCost()}`}</button>
                     </form>
                 </div>
             </div>

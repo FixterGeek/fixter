@@ -12,3 +12,12 @@ export  const createOrder = (obj, token) => {
 	};
 	return axios.post(`${url}/pay`, obj, HEADERS)
 };
+
+export const checkCoupon = (cupon, token) => {
+	const HEADERS = {
+		headers: {
+			"Authorization": token
+		}
+	};
+	return axios.get(`${url}/cupons/?cupon=${cupon}`, HEADERS)
+};
