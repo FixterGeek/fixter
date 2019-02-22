@@ -163,8 +163,10 @@ class PayForm extends Component {
 		checkCoupon(cupon, token)
 			.then(res => {
 				const cupon = res.data;
+				const card = this.state.card;
+				card.cupon = cupon;
 				toastr.success("Cupón valido");
-				this.setState({card:{cupon}}, ()=> console.log(this.state));
+				this.setState({card});
 			})
 			.catch(e => {
 				toastr.error(`${e.response.data.message}`);
