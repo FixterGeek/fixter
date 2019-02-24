@@ -30,6 +30,7 @@
     cursor: pointer;
 	border:1px solid  rgb(40, 160, 228);
 	transition: all 1s ease;
+	background-color: white;
 }
 .btn_camp:hover{
 	background-color: rgb(40, 160, 228);
