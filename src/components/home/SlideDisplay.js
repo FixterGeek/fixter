@@ -8,8 +8,8 @@ export const SlideDisplay = () => {
         <div className="slide">
            <div className="cubierta flex">
                 <div className="presentation">
-                   <h1>Aprende los mejores lenguajes y frameworks de desarrollo </h1>
-                   <p>Los mejores Bootcamps y Cursos Online</p>
+                   <h1>Aprende los mejores lenguajes para desarrollo de software</h1>
+                   <p>Cursos Presenciales | Cursos Online</p>
                     <br/>
                     <Link to="/bootcamp">
                         <button className="btn_start">Empieza a Aprender</button>

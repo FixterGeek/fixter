@@ -10,6 +10,8 @@
 
 @import url('https://fonts.googleapis.com/css?family=Lato|Pontano+Sans|Raleway');
 
+
+
 /*Slide*/
 .slide{
     background-color: #232c3b;
@@ -74,9 +76,13 @@
 .titulos{
     font-family: 'Roboto', sans-serif;
     font-size: 37px;
+	color:#424242;
+
 }
 .parrafo{
     font-family: 'Gotam';
+	color:#424242;
+
 
 }
 .logos_img{
@@ -112,6 +118,7 @@
     text-align: center;
     margin-bottom: 50px;
     font-family: 'Roboto', sans-serif;
+	color:#424242;
 }
 
 .step_box{
@@ -125,7 +132,9 @@
     width:400px;
     flex-grow: 1;
     padding: 5% 0%;
-    /*border-right:1px solid black ;*/
+	color:#424242;
+
+	/*border-right:1px solid black ;*/
 
 }
 .step_dos{
@@ -133,10 +142,14 @@
     flex-grow: 1;
     padding: 5% 0%;
     /*padding: 2% 0%;*/
+	color:#424242;
+
 }
 .step_text{
     width:70%;
     margin-left: 20px;
+	color:#424242;
+
 }
 .step_text h3, .step_text_dos h3{
     font-family: 'Roboto', sans-serif;
@@ -187,7 +200,9 @@
 
 }
 .comentario{
-    width:70%;
+	color:#424242;
+
+	width:70%;
     margin: 0 auto;
     font-size: 22px;
     text-align: center;
@@ -208,13 +223,14 @@
 }
 .signo{
     color:rgb(40, 160, 228);
-    font-size: 50px;
+    font-size: 36px;
 }
 /*Porque Fixter*/
 .why{
     background-color:#f4f5f9;
     text-align: center;
     padding: 30px 0;
+
 }
 .ask{
     display: flex;
@@ -231,6 +247,7 @@
     background-color: white;
     border-radius: 10px;
     margin: 10px 10px;
+	color:#424242;
 }
 .cuadro p{
     font-family: 'Gotam';
@@ -253,6 +270,8 @@
     flex-grow: 1;
     padding: 0 5%;
     font-size: 20px;
+	color:#424242;
+
 }
 .img_promo{
     width:300px;
@@ -416,8 +435,10 @@
     .step{
         border: none;
     }
+
     .process {
         display: none;
+		color:#424242;
     }
     .comentario{
         font-size: 16px;

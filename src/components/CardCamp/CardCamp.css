@@ -15,6 +15,7 @@
 }
 .card_info{
     padding: 2%;
+	color:#424242;
 }
 .card_info .name{
     font-size: 40px;
@@ -24,11 +25,15 @@
     width:170px;
     height:40px;
     border-radius: 20px;
-    border:none;
     font-size: 15px;
-    background-color: rgb(40, 160, 228);
-    color:white;
+    color: rgb(40, 160, 228);
     cursor: pointer;
+	border:1px solid  rgb(40, 160, 228);
+	transition: all 1s ease;
+}
+.btn_camp:hover{
+	background-color: rgb(40, 160, 228);
+	color:white;
 }
 
 .card_img{
@@ -51,6 +56,7 @@
     color:white;
     text-align: center;
     padding-top: 5px;
+	height: 100%;
 }
 .etq h3{
     line-height: .7rem;
@@ -63,7 +69,7 @@
 }
 
 .course-large{
-	height: 175px;
+	display: flex;
 	align-items: center;
 }
 
