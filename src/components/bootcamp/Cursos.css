@@ -70,3 +70,26 @@
 .fecha{
 	margin-top: -17px;
 }
+
+
+@media(max-width: 768px){
+	.white{
+		width: 55%;
+		margin-left: 5%;
+	}
+}
+
+@media(max-width: 700px){
+	.cursos{
+		flex-wrap: wrap;
+	}
+	.white{
+		width: 90%;
+		margin: 0 auto;
+	}
+	.white2{
+		position: inherit;
+		width: 90%;
+		margin: 30px auto;
+	}
+}
