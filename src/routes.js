@@ -14,6 +14,8 @@ import AdminHome from "./components/admin/adminHome/AdminHome";
 import AddCourse from "./components/admin/courses/AddCourse";
 import CourseDetail from "./components/resources/CourseDetail";
 import Modules from './components/resources/Modules';
+import Hooks from './components/bootcamp/Hooks';
+import FirePachuca from './components/bootcamp/FirePachuca';
 
 export const Routes = () => (
 	<Switch>
@@ -21,6 +23,8 @@ export const Routes = () => (
 		<Route path="/nosotros" component={Nosotros} />
 		<Route path="/perfil" component={Perfil} />
 		<Route path="/bootcamp" component={Bootcamp} />
+		<Route exact path="/fire-hooks" component={Hooks} />
+		<Route path="/fire-pachuca" component={FirePachuca} />
 		<Redirect from="/aply" to="/aplicar" />
 		<Route path="/aplicar" component={Aply} />
 		<Route path="/login" component={Login} />

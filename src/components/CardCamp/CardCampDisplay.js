@@ -27,20 +27,14 @@ export const CardCampDisplay = ({
 					<h2 className="name">{nombre}</h2>
 					<p>{descript}</p>
 				</div>
+		<br/>
 				<div className="box_btn">
-					<a href={link} target="_blank">
+
 						<button className="btn_camp ">
-							<FontAwesome name="download" /> Temario
-						</button>
-					</a>
-					<Link to="/aply">
-						<button
-							style={{ marginLeft: "20px" }}
-							className="btn_camp"
-						>
-							Inscribirme
-						</button>
-					</Link>
+							Más información
+				</button>
+
+
 				</div>
 			</div>
 			<div
