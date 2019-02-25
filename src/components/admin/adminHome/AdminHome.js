@@ -4,9 +4,9 @@ import axios from "axios";
 import toastr from "toastr";
 import moment from "moment";
 import "moment/locale/es";
+import './AdminHome.css';
 
-//const url = "http://localhost:3000";
-const url = "https://fixtercamp.herokuapp.com";
+const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
 
 export default class AdminHome extends Component {
 	state = {
@@ -58,7 +58,7 @@ export default class AdminHome extends Component {
 					<div
 						style={{
 							display: "flex",
-							felxWrap: "wrap"
+							flexWrap: "wrap"
 						}}
 					>
 						{apps.map((a, i) => {
@@ -67,16 +67,17 @@ export default class AdminHome extends Component {
 									style={{
 										border: "1px solid",
 										margin: 10,
-										padding: 5
+										padding: 15
 									}}
 									key={i}
 								>
 									<h4>{a.name}</h4>
-									<p>{a.course}</p>
+									<p>{a.course.title ? a.course.title : a.course}</p>
 									<p>{a.tel}</p>
 									<p>{a.mail}</p>
 									<p>{a.comments}</p>
 									<p>{moment(a.createdAt).format("lll")}</p>
+									<p><span className={`badge ${a.paid ? "paid": "no-paid"}`}>{a.paid ? "Pagado" : "No pagado"}</span></p>
 								</div>
 							);
 						})}

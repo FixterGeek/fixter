@@ -74,7 +74,7 @@ class PayForm extends Component {
 
 			card["number"] = numbers.join(" ");
 		} else if(field === "exp_date"){
-			let trimmed = e.target.value.replace(/\//g, ' ').replace(/\s+/g, '');
+			let trimmed = e.target.value.replace(/[/\s]/g, '');
 			if(trimmed.length > 4){
 				trimmed = trimmed.substr(0,4);
 			}
@@ -88,7 +88,7 @@ class PayForm extends Component {
 			card["exp_date"] = numbers.join("/")
 
 		} else if(field === "phone"){
-			let trimmed = e.target.value.replace(/-/g, '').replace(/\s+/g, '');
+			let trimmed = e.target.value.replace(/[-\s]/g, '');
 			if(trimmed.length > 12){
 				trimmed = trimmed.substr(0,12);
 			}
@@ -177,7 +177,7 @@ class PayForm extends Component {
 	getCost = () => {
 		const {plazo, cupon} = this.state.card;
 		const {application} = this.state;
-		return plazo === "contado" && cupon.valid || plazo !== "contado" && cupon.valid ?
+		return (plazo === "contado" && cupon.valid) || (plazo !== "contado" && cupon.valid) ?
 				(application.cost * (1 - cupon.value/100)) : plazo === "contado" ?
 					(application.cost * .9) : application.cost
 	};
