@@ -19,7 +19,6 @@ class Vue extends Component {
 						<h2 className="name">¡Vue + TypeScript!</h2>
 						<p className="fecha">1 de Abril | 26 de Abril</p>
 						<p>Aprenderás a usar Vue.Js, uno de los frameworks frontends para populares.
-							Aprenderemos a utilizar ES6/7 y TypeScript, el render de Vue, los ciclos de vida, el router
 
 						</p>
 					</div>
