@@ -35,7 +35,7 @@ export default function NavDisplay(props) {
 				</Link>
 			</div>
 			<div className="pestanas">
-				<Link to="/bootcamp">
+				<Link to="/aply">
 					<span className="less">Aplicar</span>
 				</Link>
 				<hr className="divider" />

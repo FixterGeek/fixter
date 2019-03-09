@@ -21,16 +21,31 @@
     font-size: 40px;
 
 }
+
+.btn_aply{
+	background-color: #f9d25b;
+	width:170px;
+	height:40px;
+	border-radius: 20px;
+	font-size: 15px;
+	color: white;
+	cursor: pointer;
+	border:1px solid  #f9d25b;
+	transition: all 1s ease;
+	margin-right: 20px;
+}
+
 .btn_camp{
     width:170px;
     height:40px;
     border-radius: 20px;
     font-size: 15px;
-    color: rgb(40, 160, 228);
+    color: white;
     cursor: pointer;
 	border:1px solid  rgb(40, 160, 228);
 	transition: all 1s ease;
-	background-color: white;
+	background-color:rgb(40, 160, 228);
+	margin-right: 20px;
 }
 .btn_camp:hover{
 	background-color: rgb(40, 160, 228);

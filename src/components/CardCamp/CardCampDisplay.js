@@ -27,13 +27,18 @@ export const CardCampDisplay = ({
 					<h2 className="name">{nombre}</h2>
 					<p>{descript}</p>
 				</div>
-		<br/>
+				<br/>
 				<div className="box_btn">
-
-						<button className="btn_camp ">
+					<Link to="/aply">
+						<button  className="btn_aply ">
+							Aplicar
+						</button>
+					</Link>
+					<Link to="/fire-pachuca">
+						<button className="btn_camp " >
 							Más información
-				</button>
-
+						</button>
+					</Link>
 
 				</div>
 			</div>

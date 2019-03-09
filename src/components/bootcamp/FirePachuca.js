@@ -6,7 +6,9 @@ import {Link} from 'react-router-dom';
 let link = "https://drive.google.com/file/d/1QBJ9FGtaYetws5_MfKG0kF6y_scQ4Bwl/view?usp=sharing";
 
 class Hooks extends Component {
-
+	componentDidMount () {
+		window.scroll(0, 0)
+	}
 
 	render() {
 		return (

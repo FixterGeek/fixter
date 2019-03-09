@@ -12,7 +12,7 @@ export const SlideDisplay = () => {
                    <p>Cursos Presenciales | Cursos Online</p>
                     <br/>
                     <Link to="/bootcamp">
-                        <button className="btn_start">Empieza a Aprender</button>
+                        <button className="btn_start">Explorar cursos</button>
                     </Link>
                </div>
                <div className="slide_img">

@@ -16,6 +16,8 @@ import CourseDetail from "./components/resources/CourseDetail";
 import Modules from './components/resources/Modules';
 import Hooks from './components/bootcamp/Hooks';
 import FirePachuca from './components/bootcamp/FirePachuca';
+import Vue from "./components/bootcamp/Vue";
+import Python from './components/bootcamp/Python';
 
 export const Routes = () => (
 	<Switch>
@@ -25,6 +27,8 @@ export const Routes = () => (
 		<Route path="/bootcamp" component={Bootcamp} />
 		<Route exact path="/fire-hooks" component={Hooks} />
 		<Route path="/fire-pachuca" component={FirePachuca} />
+		<Route path="/vue" component={Vue}/>
+		<Route path="/python" component={Python}/>
 		<Redirect from="/aply" to="/aplicar" />
 		<Route path="/aplicar" component={Aply} />
 		<Route path="/login" component={Login} />
