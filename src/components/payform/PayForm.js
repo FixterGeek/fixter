@@ -21,12 +21,17 @@ class PayForm extends Component {
 			loading: false,
 			isLogged: false,
 			user: {},
-			token: null
+			token: null,
+			courseId: null
 		};
 		this.conekta = new Conekta()
 	}
 
 	componentWillMount() {
+		// courseId
+		let { courseId = null } = this.props.match.params
+		this.setState({ courseId })
+		//
 		let user = JSON.parse(localStorage.getItem("user"));
 		let token = localStorage.getItem("token");
 		let application = JSON.parse(localStorage.getItem('currentApplication'))
@@ -135,13 +140,16 @@ class PayForm extends Component {
 					this.props.history.push("/perfil");
 				})
 				.catch(err => {
+					if(!err) return
 					err.response.data.details.forEach(e => toastr.error(`${e.message}`))
 					this.setState({ loading: false })
 				})
 		};
 		const conektaError = (err) => {
+			console.log(err)
 			this.setState({ loading: false })
 			toastr.error("Error al procesar datos de pago, intenta más tarde")
+			toastr.error(err.message_to_purchaser)
 		};
 		// creando el token de conekta
 		this.conekta.api.Token.create({ card: this.state.card }, conektaSuccess, conektaError)
@@ -159,8 +167,8 @@ class PayForm extends Component {
 
 	checkCoupon = () => {
 		const { cupon } = this.state.card;
-		const { token } = this.state;
-		checkCoupon(cupon, token)
+		const { token, courseId } = this.state;
+		checkCoupon({ courseId, cupon }, token)
 			.then(res => {
 				const cupon = res.data;
 				const card = this.state.card;

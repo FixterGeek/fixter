@@ -28,7 +28,7 @@ class Perfil extends Component {
 
 	pay = app => {
 		localStorage.setItem("currentApplication", JSON.stringify(app));
-		this.props.history.push("/pay");
+		this.props.history.push("/pay/" + app.course);
 	};
 
 	getUserAplications = () => {

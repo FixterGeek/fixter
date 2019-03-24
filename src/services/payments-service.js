@@ -4,20 +4,25 @@ const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuap
 
 //const url = "https://fixtercamp.herokuapp.com"
 
-export  const createOrder = (obj, token) => {
+
+function getToken() {
+	return localStorage.getItem('token')
+}
+
+export const createOrder = (obj) => {
 	const HEADERS = {
 		headers: {
-			"Authorization": token
+			"Authorization": getToken()
 		}
 	};
 	return axios.post(`${url}/pay`, obj, HEADERS)
 };
 
-export const checkCoupon = (cupon, token) => {
+export const checkCoupon = (body) => {
 	const HEADERS = {
 		headers: {
-			"Authorization": token
+			"Authorization": getToken()
 		}
 	};
-	return axios.get(`${url}/cupons/?cupon=${cupon}`, HEADERS)
+	return axios.post(`${url}/cupons/apply`, body, HEADERS)
 };

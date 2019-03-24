@@ -27,12 +27,12 @@ export const Routes = () => (
 		<Route path="/bootcamp" component={Bootcamp} />
 		<Route exact path="/fire-hooks" component={Hooks} />
 		<Route path="/fire-pachuca" component={FirePachuca} />
-		<Route path="/vue" component={Vue}/>
-		<Route path="/python" component={Python}/>
+		<Route path="/vue" component={Vue} />
+		<Route path="/python" component={Python} />
 		<Redirect from="/aply" to="/aplicar" />
 		<Route path="/aplicar" component={Aply} />
 		<Route path="/login" component={Login} />
-		<Route path="/pay" component={PayForm} />
+		<Route path="/pay/:courseId" component={PayForm} />
 		<Route exact path="/cursos/:slug" component={Modules} />
 		<Route exact path="/cursos/:slug/:lesson" component={CourseDetail} />
 		<Route path="/cursos" component={CursosConteiner} />
