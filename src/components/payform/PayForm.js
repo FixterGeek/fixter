@@ -140,7 +140,7 @@ class PayForm extends Component {
 					this.props.history.push("/perfil");
 				})
 				.catch(err => {
-					if(!err) return
+					if (!err) return
 					err.response.data.details.forEach(e => toastr.error(`${e.message}`))
 					this.setState({ loading: false })
 				})
@@ -185,9 +185,11 @@ class PayForm extends Component {
 	getCost = () => {
 		const { plazo, cupon } = this.state.card;
 		const { application } = this.state;
-		return (plazo === "contado" && cupon.valid) || (plazo !== "contado" && cupon.valid) ? //really ? XD
+		let cost = (plazo === "contado" && cupon.valid) || (plazo !== "contado" && cupon.valid) ? //really ? XD
 			(application.cost * (1 - cupon.value / 100)) : plazo === "contado" ? // more really?
 				(application.cost * 1) : application.cost // .9 before, it's obvious now but i will let the code if we want to reverse
+		if (typeof cost === "number") cost = cost.toFixed(0)
+		return cost
 	}; // I guess this is nt at the backend right?
 
 	render() {

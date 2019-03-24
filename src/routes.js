@@ -12,6 +12,8 @@ import Contacto from "./components/contacto/Contacto";
 import Politicas from "./components/politicas/Politicas";
 import AdminHome from "./components/admin/adminHome/AdminHome";
 import AddCourse from "./components/admin/courses/AddCourse";
+import addCoupon from "./components/admin/courses/addCoupon";
+
 import CourseDetail from "./components/resources/CourseDetail";
 import Modules from './components/resources/Modules';
 import Hooks from './components/bootcamp/Hooks';
@@ -39,6 +41,8 @@ export const Routes = () => (
 		<Route path="/contacto" component={Contacto} />
 		<Route path="/politicas-de-privacidad" component={Politicas} />
 		<Route exact path="/admin" component={AdminHome} />
+		{/* //admin */}
 		<Route path="/admin/addCourse" component={AddCourse} />
+		<Route path="/admin/add-coupon" component={addCoupon} />
 	</Switch>
 );

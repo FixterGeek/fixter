@@ -52,6 +52,9 @@ export default class AdminHome extends Component {
 					<Link to="/admin/addCourse">
 						<button>Agregar curso</button>
 					</Link>
+					<Link to="/admin/add-coupon">
+						<button>Agregar Cupon</button>
+					</Link>
 				</div>
 				<section>
 					<h2>Aplicaciones</h2>
@@ -77,7 +80,7 @@ export default class AdminHome extends Component {
 									<p>{a.mail}</p>
 									<p>{a.comments}</p>
 									<p>{moment(a.createdAt).format("lll")}</p>
-									<p><span className={`badge ${a.paid ? "paid": "no-paid"}`}>{a.paid ? "Pagado" : "No pagado"}</span></p>
+									<p><span className={`badge ${a.paid ? "paid" : "no-paid"}`}>{a.paid ? "Pagado" : "No pagado"}</span></p>
 								</div>
 							);
 						})}
