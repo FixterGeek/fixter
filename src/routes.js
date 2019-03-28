@@ -3,7 +3,9 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import HomeContainer from "./components/home/HomeContainer";
 import Nosotros from "./components/nosotros/Nosotros";
 import Bootcamp from "./components/bootcamp/Bootcamp";
-import { CourseList } from './components/online'
+import { CourseList, LessonList, OnlineDetail } from './components/online'
+
+
 import Aply from "./components/bootcamp/Aply";
 import Login from "./components/login/Login";
 import Perfil from "./components/perfil/Perfil";
@@ -28,7 +30,16 @@ export const Routes = () => (
 		<Route path="/nosotros" component={Nosotros} />
 		<Route path="/perfil" component={Perfil} />
 		<Route path="/bootcamp" component={Bootcamp} />
+		{/* //Online */}
+
+		<Route path="/online/:courseId/lessons" component={LessonList} />
+		<Route path="/online/:courseId" component={OnlineDetail} />
 		<Route path="/online" component={CourseList} />
+		{/* // */}
+		{/* // viewer */}
+
+		{/* // */}
+
 		<Route exact path="/fire-hooks" component={Hooks} />
 		<Route path="/fire-pachuca" component={FirePachuca} />
 		<Route path="/vue" component={Vue} />

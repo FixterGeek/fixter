@@ -1,0 +1,123 @@
+.container{
+    padding-top: 60px;
+}
+
+.videoCard{
+    background-image: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+    background-size: cover;
+    color:white;
+    padding:40px;
+    position: relative;
+    z-index: 0;
+    text-align: center;
+    overflow:hidden;
+}
+
+.overlay{
+    background: rgba(0,0,0,0.4);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    z-index: -1;
+}
+
+.content{
+    position: relative;
+    z-index: 1;
+}
+
+.videoCard video{
+    display: none;
+}
+
+.content span{
+    text-transform: uppercase;
+}
+
+.videoCard h1{
+    text-align: left;
+}
+
+.description{
+    display: none;
+    max-width:600px;
+    margin:0 auto;
+}
+
+.videoCard button{
+    background-color: lightslategray;
+    width: 250px;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    color:white;
+    box-sizing: border-box;
+    margin:8px 10px;
+    outline: none;
+    border-radius: 6px;
+    border: none;
+    cursor:pointer;
+}
+
+.videoCard button:hover{
+    background-color: #232c3b;
+    
+}
+
+.circle{
+    padding: 20px;
+    border: 4px solid white;
+    border-radius: 50%;
+    width: 95px;
+    height: 95px;
+    text-align: center;
+    padding-left:30px;
+    box-sizing: border-box;
+    margin-top:50px;
+    cursor: pointer;
+    transition:all .3s ease;
+}
+
+.circle:hover{
+    transform: scale(1.2);
+}
+
+@media(min-width:768px){
+    .videoCard{
+        padding-top: 100px; 
+    }
+    .videoCard h1{
+        text-align: center;
+    }
+    .description{
+        display: inherit;
+    }
+    .videoCard video{
+        display:inherit;
+        position: absolute;
+        top:-27%;
+        left:-7%;
+        height:700px;
+        z-index:-1;
+        margin:0;
+    }
+}
+
+@media(min-width:1270px){
+    .videoCard video{
+        height:1000px;
+    }
+}
+@media(min-width:1800px){
+    .videoCard video{
+        height:1500px;
+    }
+    .videoCard{
+        font-size:1.8rem;
+    }
+    .circle{
+        width:130px;
+        height:130px;
+    }
+}

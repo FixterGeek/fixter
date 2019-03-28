@@ -1,12 +1,13 @@
 import React from 'react'
-import { CourseCard } from './index';
+import { LessonCard } from './index';
 
-export function CourseList() {
+export function LessonList() {
     return <div style={styles.container}>
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
+        <LessonCard />
+        <LessonCard />
+        <LessonCard />
+        <LessonCard />
+        <LessonCard />
     </div>
 }
 
