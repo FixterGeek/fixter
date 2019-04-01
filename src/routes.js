@@ -4,7 +4,8 @@ import HomeContainer from "./components/home/HomeContainer";
 import Nosotros from "./components/nosotros/Nosotros";
 import Bootcamp from "./components/bootcamp/Bootcamp";
 import { CourseList, LessonList, OnlineDetail } from './components/online'
-
+//viewer
+import ViewerPage from './components/courseViewer/ViewerPage'
 
 import Aply from "./components/bootcamp/Aply";
 import Login from "./components/login/Login";
@@ -30,14 +31,17 @@ export const Routes = () => (
 		<Route path="/nosotros" component={Nosotros} />
 		<Route path="/perfil" component={Perfil} />
 		<Route path="/bootcamp" component={Bootcamp} />
+		{/* // viewer */}
+		<Route
+			path="/online/:courseId/:lessons/:lessonId"
+			component={ViewerPage}
+		/>
+		{/* // */}
 		{/* //Online */}
 
 		<Route path="/online/:courseId/lessons" component={LessonList} />
 		<Route path="/online/:courseId" component={OnlineDetail} />
 		<Route path="/online" component={CourseList} />
-		{/* // */}
-		{/* // viewer */}
-
 		{/* // */}
 
 		<Route exact path="/fire-hooks" component={Hooks} />
