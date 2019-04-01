@@ -1,33 +1,39 @@
 import React from 'react'
-import { card } from './LessonCard.module.css'
+import { card, icon, progress } from './LessonCard.module.css'
 import PropTypes from 'prop-types'
 
-export function LessonCard({ className, logo, type, title, body, buttonText, ...props }) {
+export function LessonCard({ className, image, number, title, buttonText, ...props }) {
     return (
         <div {...props} className={card + " " + className}>
-            <img src={logo} alt="course icon" />
-            <span>{type}</span>
-            <h4>{title}</h4>
-            <p>
-                {body}
-            </p>
+            <article className={icon}>
+                <img src={image} alt="icon" />
+            </article>
+            <article>
+                <span>Lesson {number}</span>
+                <h4>{title}</h4>
+                <button>{buttonText}</button>
+            </article>
+            <article>
+                <progress className={progress} max="100" value="60" /> 22% Visto
 
-            <hr />
-            <button>{buttonText}</button>
+            </article>
+
         </div>
     )
 }
 
 LessonCard.propTypes = {
-    logo: PropTypes.string,
-    title: PropTypes.string.isRequired
+    number: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    buttonText: PropTypes.string,
+    image: PropTypes.string
 }
 
 LessonCard.defaultProps = {
-    logo: "http://blog.fixter.org/content/images/2017/04/geek_circulo_logo-1.png",
-    type: "Curso",
-    title: "Aprende Redux fácilmente",
-    body: "With this major update to the JavaScript language, a number of syntax improvements have been added. In this lesson, you'll learn to improve your JavaScript code with these syntax updates.",
-    buttonText: "Ver Curso"
+    number: 1,
+    title: "Before You Get Started",
+    buttonText: "View Lesson",
+    // image: "https://i.pinimg.com/originals/44/f9/23/44f9239764654899e124ce738c7f3ae0.png"
+    image: "http://blog.fixter.org/content/images/2017/04/geek_circulo_logo-1.png"
 }
 

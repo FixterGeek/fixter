@@ -1,0 +1,92 @@
+*{
+    font-family: Avenir;
+}
+.card{
+    margin:20px;
+    /* border: 1px solid lightgrey; */
+    padding: 0 50px;
+    width: 339px;
+    border-radius: 6px;
+    bottom: 0;
+    color:black;
+    /* overflow: hidden; */
+    /* text-indent: -5em; */
+    transition: box-shadow .2s ease-in-out;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);    background: white;
+    padding-bottom: 10px;
+    padding-top: 15px;
+    position: relative;
+}
+
+.card > img{
+    position: absolute;
+    top:25px;
+    left:-10px;
+    width: 50px;
+}
+
+.card > h4{
+    font-weight: inherit;
+    font-size: 1.2rem;
+}
+
+.card > span{
+    font-size: .7rem;
+    color:grey;
+}
+
+.card p{
+    color:gray;
+    font-size: .8rem;
+    transition: all .3s ease;
+}
+
+.card button{
+    padding: 5px 20px;
+    border: 2px solid lightblue;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-family: Avenir;
+    font-size: .8rem;
+    cursor: pointer;
+    transition: all .3s ease;
+    margin-left:200px;
+    outline: none;
+}
+
+.card button:hover{
+    background: lightblue;
+    color:grey;
+}
+
+@media(max-width:768px){
+    .card{
+        width:70%;
+        margin:20px auto;
+    }
+    .card p{
+        transform: scaleY(0);
+        overflow: hidden;
+        height: 0;
+    }
+    .card button{
+        margin-left: 70%;
+        font-size: .6rem;
+        width: 100px;
+    }
+    .card > hr{
+        position: absolute;
+        width: 100%;
+        left:0;
+        bottom:40px;
+        border-color: whitesmoke;
+    }
+}
+
+
+@media(max-width:350px){
+    .card{
+        width:clac(100%-40px);
+        margin:20px 20px;
+    }
+}

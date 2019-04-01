@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/geek_completo.png";
 import firebase from "../../firebase";
 //import user from "../../assets/user.png";
 import "./Nav.css";
+import { MenuContext } from '../../context/MenuContext'
+import FontAwesome from 'react-fontawesome'
 
 export default function NavDisplay(props) {
+	let { state, toggle } = useContext(MenuContext)
+	let { active } = state
 	let [user, setUser] = useState(() =>
 		JSON.parse(localStorage.getItem("user"))
 	);
@@ -26,7 +30,6 @@ export default function NavDisplay(props) {
 		// });
 	}
 	let { photoURL, providerData } = user || {};
-	//console.log(providerData[0].providerId);
 	return (
 		<div className="nav">
 			<Link to="/">
@@ -35,6 +38,19 @@ export default function NavDisplay(props) {
 			<div className="menu">
 				<Link to="/cursos-presenciales">
 					<p>Specific Courses</p>
+		<div className="nav-bar">
+			{active && <FontAwesome
+				onClick={toggle}
+				style={{
+					color: "white",
+					paddingLeft: 20,
+					cursor: "pointer"
+				}}
+				name="bars" />}
+			<div className="logo">
+
+				<Link to="/">
+					<img className="logo_fix" src={logo} alt="logo" />
 				</Link>
 				<p>Plataforma Online</p>
 				<p>Sobre Fixter</p>
@@ -50,33 +66,37 @@ export default function NavDisplay(props) {
 						</Link>
 					</div>
 				) : (
-					<div
-						className="dropdown"
-						style={{ display: "flex", alignItems: "center" }}
-					>
-						<button className="dropbtn">
-							<img
-								className="userphoto"
-								src={
-									photoURL &&
-									providerData[0].providerId !==
-										"facebook.com"
-										? photoURL
-										: "/static/media/user.76654c1c.png"
-								}
-								alt=""
-							/>
-						</button>
-						<div className="dropdown-content">
-							<Link to="/perfil">Perfil</Link>
-							<Link onClick={signOut} to="/">
-								Cerrar sesión
+						<div
+							className="dropdown"
+							style={{ display: "flex", alignItems: "center" }}
+						>
+							<button className="dropbtn">
+								<img
+									className="userphoto"
+									src={
+										photoURL &&
+											providerData[0].providerId !==
+											"facebook.com"
+											? photoURL
+											: "/static/media/user.76654c1c.png"
+									}
+									alt=""
+								/>
+							</button>
+							<div className="dropdown-content">
+								<Link to="/perfil">Perfil</Link>
+								<Link onClick={signOut} to="/">
+									Cerrar sesión
 							</Link>
-						</div>
+							</div>
 
 						<button  className="close" >Cerrar sesion</button>
 					</div>
 				)}
+
+							{/*<button  className="close" >Cerrar sesion</button>*/}
+						</div>
+					)}
 			</div>
 		</div>
 	);
