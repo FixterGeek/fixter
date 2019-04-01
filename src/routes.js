@@ -14,23 +14,23 @@ import Politicas from "./components/politicas/Politicas";
 import AdminHome from "./components/admin/adminHome/AdminHome";
 import AddCourse from "./components/admin/courses/AddCourse";
 import addCoupon from "./components/admin/courses/addCoupon";
-
 import CourseDetail from "./components/resources/CourseDetail";
 import Modules from './components/resources/Modules';
-import Hooks from './components/bootcamp/Hooks';
-import FirePachuca from './components/bootcamp/FirePachuca';
 import Vue from "./components/bootcamp/Vue";
 import Python from './components/bootcamp/Python';
+import Presencial from "./components/presencial/PresencialDetail";
+import {ReactRedux} from "./components/presencial/ReactRedux";
+import {Redux} from "./components/presencial/Redux";
 
 export const Routes = () => (
 	<Switch>
 		<Route exact path="/" component={HomeContainer} />
 		<Route path="/nosotros" component={Nosotros} />
 		<Route path="/perfil" component={Perfil} />
-		<Route path="/bootcamp" component={Bootcamp} />
+		<Route path="/cursos-presenciales" component={Presencial} />
 		<Route path="/online" component={CourseList} />
-		<Route exact path="/fire-hooks" component={Hooks} />
-		<Route path="/fire-pachuca" component={FirePachuca} />
+		<Route path="/react-redux" component={ReactRedux} />
+		<Route path="/redux" component={Redux} />
 		<Route path="/vue" component={Vue} />
 		<Route path="/python" component={Python} />
 		<Redirect from="/aply" to="/aplicar" />

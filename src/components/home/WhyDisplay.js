@@ -5,7 +5,6 @@ export const WhyDisplay = () => {
 
     return (
         <div className="why">
-            <h2 className="titulos">We made easy</h2>
             <div className="ask">
                 <div className="cuadro ">
                     <h4><FontAwesome name="edit"/> Registrate</h4>

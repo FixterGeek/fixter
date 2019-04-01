@@ -1,0 +1,176 @@
+.presencial{
+	background-color:rgba(204,204,204,.2);
+	padding: 50px 0;
+}
+.presencial h2{
+	margin-left: 10%;
+}
+.space{
+	width: 80%;
+	margin: 0 auto;
+
+}
+.fle{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.card-p{
+	width: 300px;
+	flex-grow: 1;
+	box-shadow: 0 2px 30px 0 rgba(0,0,0,0.2);
+	height: auto;
+	margin: 20px;
+	display: flex;
+}
+.card-p_img{
+	width: 53%;
+	background-image: url('https://images.pexels.com/photos/36990/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+	background-size: cover;
+	background-position: center;
+}
+.card-p_info{
+	width: 47%;
+	padding: 2% 2% 5% 2%;
+	box-sizing: border-box;
+	text-align: center;
+}
+.card-p_info span{
+	margin-right: 10px;
+}
+.btn-small{
+	background-color:#01c0f7;
+	width: 120px;
+	height: 40px;
+	border: none;
+	color:white;
+	font-size: 16px;
+}
+.cover{
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	cursor: pointer;
+	background: rgba(76,76,76,0);
+	background: -moz-linear-gradient(top, rgba(76,76,76,0) 0%, rgba(44,44,44,0) 0%, rgba(71,71,71,0) 0%, rgba(0,0,0,0) 0%, rgba(17,17,17,0) 0%, rgba(89,89,89,0) 0%, rgba(102,102,102,0) 0%, rgba(50,50,50,0) 64%, rgba(28,28,28,0.75) 91%, rgba(19,19,19,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(76,76,76,0)), color-stop(0%, rgba(44,44,44,0)), color-stop(0%, rgba(71,71,71,0)), color-stop(0%, rgba(0,0,0,0)), color-stop(0%, rgba(17,17,17,0)), color-stop(0%, rgba(89,89,89,0)), color-stop(0%, rgba(102,102,102,0)), color-stop(64%, rgba(50,50,50,0)), color-stop(91%, rgba(28,28,28,0.75)), color-stop(100%, rgba(19,19,19,1)));
+	background: -webkit-linear-gradient(top, rgba(76,76,76,0) 0%, rgba(44,44,44,0) 0%, rgba(71,71,71,0) 0%, rgba(0,0,0,0) 0%, rgba(17,17,17,0) 0%, rgba(89,89,89,0) 0%, rgba(102,102,102,0) 0%, rgba(50,50,50,0) 64%, rgba(28,28,28,0.75) 91%, rgba(19,19,19,1) 100%);
+	background: -o-linear-gradient(top, rgba(76,76,76,0) 0%, rgba(44,44,44,0) 0%, rgba(71,71,71,0) 0%, rgba(0,0,0,0) 0%, rgba(17,17,17,0) 0%, rgba(89,89,89,0) 0%, rgba(102,102,102,0) 0%, rgba(50,50,50,0) 64%, rgba(28,28,28,0.75) 91%, rgba(19,19,19,1) 100%);
+	background: -ms-linear-gradient(top, rgba(76,76,76,0) 0%, rgba(44,44,44,0) 0%, rgba(71,71,71,0) 0%, rgba(0,0,0,0) 0%, rgba(17,17,17,0) 0%, rgba(89,89,89,0) 0%, rgba(102,102,102,0) 0%, rgba(50,50,50,0) 64%, rgba(28,28,28,0.75) 91%, rgba(19,19,19,1) 100%);
+	background: linear-gradient(to bottom, rgba(76,76,76,0) 0%, rgba(44,44,44,0) 0%, rgba(71,71,71,0) 0%, rgba(0,0,0,0) 0%, rgba(17,17,17,0) 0%, rgba(89,89,89,0) 0%, rgba(102,102,102,0) 0%, rgba(50,50,50,0) 64%, rgba(28,28,28,0.75) 91%, rgba(19,19,19,1) 100%);
+}
+.cover p{
+	color:white;
+
+}
+
+
+.slide-curso{
+	width: 100%;
+	height: 40vh;
+	background-image: url('https://images.pexels.com/photos/34140/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+	background-size: cover;
+	background-position: center;
+	align-items: center;
+	display: flex;
+}
+
+
+.curso-box{
+	width: 100%;
+	/*
+	background-color:rgba(204,204,204,.2);
+	*/
+	box-sizing: border-box;
+	color:#424242;
+	display: flex;
+}
+.text-portada{
+	width: 80%;
+	margin: 0 auto;
+	color: white;
+
+}
+.text-portada h2{
+	font-size: 3em;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+.text-portada p{
+	margin-top: 0px;
+}
+.box-uno{
+	width: 45%;
+	margin-left: 10%;
+	background-color: white;
+	min-height: 400px;
+	padding: 2%;
+	margin-top: 50px;
+	margin-bottom: 50px;
+
+}
+.temario p{
+	font-size: 16px;
+	margin: 2px 0 2px 0;
+}
+.temario span{
+	font-size: 12px;
+	color:#28a0e4;
+	margin-right: 10px;
+}
+.white h2{
+	font-size: 32px;
+}
+.white em{
+	color:#28a0e4;
+}
+.nota{
+	font-size: 14px !important;
+}
+.nota a{
+	color:#28a0e4 ;
+	text-decoration: underline;
+}
+.box-dos{
+	width: 20%;
+	margin-left: 5%;
+	background-color: white;
+	margin-top: 50px;
+	right: 10%;
+	padding: 2%;
+
+}
+.white2{
+	text-align: center;
+}
+.white2 h3{
+	color:#28a0e4;
+}
+
+
+@media(max-width: 768px){
+	.white{
+		width: 55%;
+		margin-left: 5%;
+	}
+}
+
+@media(max-width: 700px){
+	.cursos{
+		flex-wrap: wrap;
+	}
+	.white{
+		width: 90%;
+		margin: 0 auto;
+	}
+	.white2{
+		position: inherit;
+		width: 90%;
+		margin: 30px auto;
+	}
+}
+
+

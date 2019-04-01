@@ -28,22 +28,25 @@ export default function NavDisplay(props) {
 	let { photoURL, providerData } = user || {};
 	//console.log(providerData[0].providerId);
 	return (
-		<div className="nav-bar">
-			<div className="logo">
-				<Link to="/">
-					<img className="logo_fix" src={logo} alt="logo" />
+		<div className="nav">
+			<Link to="/">
+				<img className="logo" src={logo} alt="logo"/>
+			</Link>
+			<div className="menu">
+				<Link to="/cursos-presenciales">
+					<p>Specific Courses</p>
 				</Link>
-			</div>
-			<div className="pestanas">
+				<p>Plataforma Online</p>
+				<p>Sobre Fixter</p>
 				<Link to="/aply">
-					<span className="less">Aplicar</span>
+					<button className="btn_app">Aplicar</button>
 				</Link>
 				<hr className="divider" />
 
 				{!user ? (
 					<div className="log">
 						<Link to="/login">
-							<span>Login</span>
+							<p>Login</p>
 						</Link>
 					</div>
 				) : (
@@ -71,7 +74,7 @@ export default function NavDisplay(props) {
 							</Link>
 						</div>
 
-						{/*<button  className="close" >Cerrar sesion</button>*/}
+						<button  className="close" >Cerrar sesion</button>
 					</div>
 				)}
 			</div>
