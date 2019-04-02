@@ -22,7 +22,7 @@ import Modules from './components/resources/Modules';
 import Vue from "./components/bootcamp/Vue";
 import Python from './components/bootcamp/Python';
 import Presencial from "./components/presencial/PresencialDetail";
-import {ReactRedux} from "./components/presencial/ReactRedux";
+import ReactRedux from "./components/presencial/ReactRedux";
 import {Redux} from "./components/presencial/Redux";
 
 export const Routes = () => (
@@ -50,8 +50,6 @@ export const Routes = () => (
 		<Route path="/online" component={CourseList} />
 		{/* // */}
 
-		<Route exact path="/fire-hooks" component={Hooks} />
-		<Route path="/fire-pachuca" component={FirePachuca} />
 		<Route path="/vue" component={Vue} />
 		<Route path="/python" component={Python} />
 		<Redirect from="/aply" to="/aplicar" />

@@ -492,7 +492,10 @@
 .home h1{
 	font-size: 7rem;
 	margin-bottom: 0px;
+
 }
+
+
 .slogan{
 	margin-top: -10px;
 	font-size: 24px;
@@ -508,11 +511,33 @@
 	position: relative;
 	top:20px;
 	font-size: 18px;
+	display: flex;
+	color:#6c717d;
+	height: 220px;
+
+}
+.card_home_img{
+	width: 200px;
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+}
+.card_home_img img{
+	width: 150px;
+	margin: 0 auto;
+	opacity: .4;
+
+}
+.card_home_text{
+	width: 800px;
+	flex-grow: 1;
+	padding: 2% 5%;
+	box-sizing: border-box;
 }
 .btn_large{
 	width: 200px;
 	height: 50px;
-	background-color: #01c0f7;
+	background-color: #ffce4d;
 	position: relative;
 	right: 30px;
 	top: 0px;
@@ -524,7 +549,7 @@
 
 .welcome{
 	width: 100%;
-	background-image: url('https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+	background-image: url('../../assets/_DSC0371.JPG');
 	height: 80vh;
 	background-position: center;
 	background-size: cover;
@@ -547,9 +572,12 @@
 	width: 300px;
 	flex-grow: 1;
 	padding-right: 50px;
+	text-align: left;
+
 }
 .why-text h2{
 	margin-top: 0px;
+	font-size: 30px;
 }
 
 .why-img{
@@ -762,4 +790,21 @@
 
 
 }
+.ask{
+	display: flex;
+	flex-wrap: wrap;
+
+}
+
+.cuadro{
+	width:190px;
+	flex-grow: 1;
+	padding: 0 1%;
+	background-color: white;
+	border-radius: 10px;
+	margin: 10px 10px;
+	color:#424242;
+}
+
+
 

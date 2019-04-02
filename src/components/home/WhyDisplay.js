@@ -13,17 +13,17 @@ export const WhyDisplay = () => {
                 <div className="cuadro">
 
                     <h4><FontAwesome name="id-badge"/> Inscríbete</h4>
-                    <p>Asiste a un Bootcamp y aprende nuevas tecnologías en tan solo 8 semanas.</p>
+                    <p>Asiste a un curso y aprende nuevas tecnologías.</p>
                 </div>
                 <div className="cuadro">
 
                     <h4><FontAwesome name="laptop"/> eLearning</h4>
-                    <p>Aprende con libertad, eligiendo la hora y lugar para tu aprendizaje</p>
+                    <p>Aprende con libertad, elige la hora y lugar para tu aprendizaje.</p>
                 </div>
                 <div className="cuadro">
 
                     <h4><FontAwesome name="rocket"/> Comunidad</h4>
-                    <p>Se parte de nuestra comunidad (meetups, conferencias, posadas y mucho código).</p>
+                    <p>Se parte de la comunidad (meetups, conferencias y mucho código).</p>
                 </div>
             </div>
         </div>

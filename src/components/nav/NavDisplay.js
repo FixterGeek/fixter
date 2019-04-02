@@ -38,66 +38,51 @@ export default function NavDisplay(props) {
 			<div className="menu">
 				<Link to="/cursos-presenciales">
 					<p>Specific Courses</p>
-		<div className="nav-bar">
-			{active && <FontAwesome
-				onClick={toggle}
-				style={{
-					color: "white",
-					paddingLeft: 20,
-					cursor: "pointer"
-				}}
-				name="bars" />}
-			<div className="logo">
-
-				<Link to="/">
-					<img className="logo_fix" src={logo} alt="logo" />
 				</Link>
-				<p>Plataforma Online</p>
-				<p>Sobre Fixter</p>
-				<Link to="/aply">
-					<button className="btn_app">Aplicar</button>
-				</Link>
-				<hr className="divider" />
 
-				{!user ? (
-					<div className="log">
-						<Link to="/login">
-							<p>Login</p>
+					{/*	<p>Plataforma Online</p>
+						<p>Geekcast</p>*/}
+						<Link to="/aply">
+							<button className="btn_app">Aplicar</button>
 						</Link>
-					</div>
-				) : (
-						<div
-							className="dropdown"
-							style={{ display: "flex", alignItems: "center" }}
-						>
-							<button className="dropbtn">
-								<img
-									className="userphoto"
-									src={
-										photoURL &&
-											providerData[0].providerId !==
-											"facebook.com"
-											? photoURL
-											: "/static/media/user.76654c1c.png"
-									}
-									alt=""
-								/>
-							</button>
-							<div className="dropdown-content">
-								<Link to="/perfil">Perfil</Link>
-								<Link onClick={signOut} to="/">
-									Cerrar sesión
-							</Link>
+						<hr className="divider" />
+
+						{!user ? (
+							<div className="log">
+								<Link to="/login">
+									<p>Login</p>
+								</Link>
 							</div>
+						) : (
+								<div
+									className="dropdown"
+									style={{ display: "flex", alignItems: "center" }}
+								>
+									<button className="dropbtn">
+										<img
+											className="userphoto"
+											src={
+												photoURL &&
+													providerData[0].providerId !==
+													"facebook.com"
+													? photoURL
+													: "/static/media/user.76654c1c.png"
+											}
+											alt=""
+										/>
+									</button>
 
-						<button  className="close" >Cerrar sesion</button>
+									<div className="dropdown-content">
+										<Link to="/perfil">Perfil</Link>
+										<Link onClick={signOut} to="/">
+											Cerrar sesión
+										</Link>
+									</div>
+
+								<button  className="close" >Cerrar sesion</button>
+							</div>
+						)}
 					</div>
-				)}
-
-							{/*<button  className="close" >Cerrar sesion</button>*/}
-						</div>
-					)}
 			</div>
-		</div>
 	);
 }
