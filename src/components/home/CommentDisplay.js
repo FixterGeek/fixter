@@ -10,11 +10,11 @@ export const CommentDisplay = () => {
 				<div className="photo-alumno">
 				</div>
 				<div className="comment-alumno">
-					<h3>Nombre del alumno</h3>
+
 					<p>
-						Aprender a programar, y convertirme en un desarrollador web era uno de mis principales objetivos al iniciar mi carrera profesional, pero no quería seguir el esquema tradicional. Por suerte encontré Fixter y su sistema de enseñanza, el cual me llevó no solo a aprender a programar, si no a convertirme en un desarrollador profesional
+						He sido alumno e instructor de Fixter desde 2016. Gracias a ellos he conseguido skills con los que he tenido trabajos como developer en varios estados de la república, así como en USA. Me motivaron para crear mi propia comunidad y mi propia casa de desarrollo.
 					</p>
-					<p> - Oswaldo Martinez</p>
+					<p> - Martín Melo</p>
 				</div>
 			</div>
         </div>

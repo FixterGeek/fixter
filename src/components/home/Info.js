@@ -5,10 +5,10 @@ export const Info = () => {
 	return (
 		<div className="info">
 			<div>
-				<h3>Join our mailing list to stay up-to-date on upcoming courses and events.
+				<h3>¿Quieres saber más acerca de nuestros cursos y eventos? Dejános tu mail.
 				</h3>
 				<div className="flx">
-				<input type="text"/>
+				<input type="text" placeholder="ejemplo@fixter.org"/>
 					<button>Enviar</button>
 				</div>
 

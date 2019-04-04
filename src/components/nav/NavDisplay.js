@@ -43,7 +43,7 @@ export default function NavDisplay(props) {
 					{/*	<p>Plataforma Online</p>
 						<p>Geekcast</p>*/}
 						<Link to="/aply">
-							<button className="btn_app">Aplicar</button>
+							<button className="btn_app less">Aplicar</button>
 						</Link>
 						<hr className="divider" />
 
@@ -79,7 +79,7 @@ export default function NavDisplay(props) {
 										</Link>
 									</div>
 
-								<button  className="close" >Cerrar sesion</button>
+
 							</div>
 						)}
 					</div>

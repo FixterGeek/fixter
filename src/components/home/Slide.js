@@ -23,7 +23,9 @@ export const Slide = () => {
 						Explora todos los cursos, dinos cual es tu objetivo y te guiaremos en esta travesía.
 
 					</p>
-					<button className="btn_large">Explorar</button>
+					<Link to="/cursos-presenciales">
+						<button className="btn_large">Explorar</button>
+					</Link>
 				</div>
 			</div>
 		</div>

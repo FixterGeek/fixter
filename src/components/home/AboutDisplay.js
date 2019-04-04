@@ -1,6 +1,8 @@
 import React from 'react';
 import robot from '../../assets/robotino.png';
 import {WhyDisplay} from "./WhyDisplay";
+import {Link} from "react-router-dom";
+import photo from '../../assets/_DSC0390.JPG';
 
 export const AboutDisplay = () => {
 
@@ -15,11 +17,13 @@ export const AboutDisplay = () => {
 						Nuestro bootcamp busca enseñar a los curiosos por el código los lenguajes de programación más modernos de forma profesional.</p>
 				</div>
 				<div>
-					<img className="why-img" src="https://images.pexels.com/photos/36990/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""/>
+					<img className="why-img" src={photo} alt=""/>
 				</div>
 			</div>
 			<WhyDisplay/>
+			<Link to="/aply">
 			<button className="btn_float">Aplicar</button>
+			</Link>
 		</div>
 
 
