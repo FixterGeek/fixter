@@ -8,7 +8,7 @@ import hooks from '../../assets/51565935_2358159057541818_2165592797782999040_o.
 
 
 export const PerfilDisplay = ({ photoURL, displayName, email, isLogged, applications = [], pay }) => {
-
+    console.log(applications)
     return (
         <div className="perfil">
             <div className="profile">
@@ -34,15 +34,18 @@ export const PerfilDisplay = ({ photoURL, displayName, email, isLogged, applicat
                         </div>
                         <hr className="division" />
                         <div>
-                            {applications.map((app, key) => (
+                            {applications.map((app, key) => {
+                                let {course = {}} = app
+                                let {title = "Sin titulo", updatedAt} = course
+                                return (
                                 <AplicationCard
                                     key={key}
                                     application={app}
                                     pay={pay}
-                                    nombre="React Hooks + Firebase"
-                                    descript="Aprenderás todo lo que necesitas sobre la programación de una aplicación web con JavaScript y ReactJs junto con su más reciente lanzamiento... Hooks. Además, aprenderás Firebase, un backend as a service de Google, usando principalmente su base de datos no relacional, teniendo con esto una aplicación fullstack completa sin tener que crear un backend en ningún otro lenguaje."
+                                    nombre={title}
+                                    descript=""
                                     imagen={hooks}
-                                    fecha="4 de Marzo"
+                                    fecha={updatedAt}
                                     sabatino={true}
                                     dia2="Mar, Jue, Sab"
                                     horario2="7pm a 10pm y Sab 10am a 2pm"
@@ -52,7 +55,8 @@ export const PerfilDisplay = ({ photoURL, displayName, email, isLogged, applicat
                                     horario="7:00 pm a 10:00 pm"
                                     precio="12,000.00"
                                 />
-                            ))}
+                            )
+                            })}
                         </div>
                         {/* <div className="box_courses">
                             <div className="crs opacity">
