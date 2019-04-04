@@ -38,6 +38,10 @@ function MenuProvider({ children }) {
     let reducer = (prevState, newState) => ({ ...prevState, ...newState })
     let [state, setState] = useReducer(reducer, init)
 
+    function clearCourse() {
+        setState({ active: false })
+    }
+
     function getLesson(id) {
         setState({ lessonName: "gotten lesson", active: true })
     }
@@ -65,6 +69,7 @@ function MenuProvider({ children }) {
     }
 
     return <Provider value={{
+        clearCourse,
         setVideo,
         state,
         getLesson,

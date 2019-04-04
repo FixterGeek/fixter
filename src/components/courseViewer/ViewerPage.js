@@ -4,11 +4,12 @@ import { MenuContext } from '../../context/MenuContext'
 import VideoViewer from './VideoViewer';
 
 export default function Viewer({ match }) {
-    let { getLesson, state } = useContext(MenuContext)
+    let { getLesson, state, clearCourse } = useContext(MenuContext)
     let { currentVideo } = state
     useEffect(() => {
         let { lessonId, courseId } = match.params
         getLesson(courseId, lessonId)
+        return clearCourse
     }, [])
 
     return (

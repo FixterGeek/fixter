@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { ContactoDisplay } from './ContactoDisplay';
 import firebase from '../../firebase';
+import Swal from 'sweetalert2'
+import {contactMail} from '../../services/mailingService'
 
 class Contacto extends Component {
     state = {
@@ -55,7 +57,18 @@ class Contacto extends Component {
 
                             });
                     }
-                    console.log("Si guarde" + r.key)
+                    //console.log("Si guarde" + r.key)
+                    Swal.fire(
+                        '¡Gracias!',
+                        'Leeremos tu mensaje y nos comunicaremos contigo muy pronto',
+                        'success'
+                      )
+                    contactMail({
+                        displayName:this.state.newMessage.nombre,
+                        email:this.state.newMessage.email,
+                        tel:this.state.newMessage.tel,
+                        text:this.state.newMessage.msj
+                    })
                     this.props.history.push("/");
 
                 })
