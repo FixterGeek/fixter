@@ -30,6 +30,7 @@ class Aply extends Component {
         }
 		getCourses()
 			.then(res => {
+                console.log(res)
 				const {courses} = res.data;
 				this.setState({courses});
 			}).catch(err => console.error(err))
@@ -69,12 +70,18 @@ class Aply extends Component {
 				})
 				.catch(e => {
 					console.log(e);
-					toastr.error("No se pudo subir, intenta más tarde.");
+                    toastr.warning("Tu sesión expiró, porfavor inicia sesión nuevamente.");
+                    this.removeToken()
 				});
 		} else {
-			alert("existen errores");
+			toastr.error("existen errores");
 		}
-	};
+    };
+    
+    removeToken = () => {
+        localStorage.clear()
+        this.props.history.push('/login')
+    }
 
     render() {
         const {errors, courses, newAply } = this.state
