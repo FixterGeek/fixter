@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FontAwesome from "react-fontawesome";
+import {Link} from 'react-router-dom';
 
 class ReactRedux extends Component {
 	render() {
@@ -70,7 +71,9 @@ class ReactRedux extends Component {
 						<p>Cubic idea | Jalapa #1000, Roma Norte, CDMX</p>
 						<br/>
 						<div style={{textAlign:"center"}}>
-							<button className="btn_app">Aplicar</button>
+							<Link to="/aply">
+								<button className="btn_app">Aplicar</button>
+							</Link>
 						</div>
 					</div>
 				</div>

@@ -25,7 +25,6 @@
 }
 .card-p_img{
 	width: 53%;
-	background-image: url('https://images.pexels.com/photos/36990/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
 	background-size: cover;
 	background-position: center;
 }
@@ -45,6 +44,7 @@
 	border: none;
 	color:white;
 	font-size: 16px;
+	cursor: pointer;
 }
 .cover{
 	width: 100%;
@@ -184,6 +184,26 @@
 		width: 90%;
 		margin: 30px auto;
 	}
+}
+
+@media(max-width: 440px) {
+	.presencial h2{
+		margin-top: 50px;
+	}
+	.space{
+		width: 90%;
+	}
+	.card-p{
+		margin: 5px;
+	}
+}
+
+@media(max-width: 320px) {
+
+	.space{
+		width: 100%;
+	}
+
 }
 
 

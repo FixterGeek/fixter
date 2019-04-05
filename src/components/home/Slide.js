@@ -32,6 +32,19 @@ export const Slide = () => {
 			<div className="welcome">
 
 			</div>
+		<div className="mobile">
+			<div className="black">
+				<div>
+					<h1>Learn to <span>code</span></h1>
+
+					<p className="slogan">and change your life or your career with the right
+						technology and right skills.</p>
+					<Link to="/cursos-presenciales">
+						<button className="btn_large">Explorar</button>
+					</Link>
+				</div>
+			</div>
+		</div>
 
 	</div>
 	);

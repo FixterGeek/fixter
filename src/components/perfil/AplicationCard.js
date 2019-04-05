@@ -17,11 +17,11 @@ export const AplicationCard = ({ pay, application, nombre, descript, imagen, fec
                         <button style={{marginLeft:"20px"}} className="btn_camp">Recursos</button>
                     </Link> */}
 
-                    <button disabled className="btn_camp">Recursos</button>
+                    <button disabled className="btn_app">Recursos</button>
 
                     <button
                         style={{ marginLeft: "50px" }}
-                        className={`btn_camp ${!application.paid ? null : 'payed'}`}
+                        className={`btn_app ${!application.paid ? null : 'payed'}`}
                         disabled={application.paid}
                         onClick={() => pay(application)} >{!application.paid ? <FontAwesome name="money" /> : <FontAwesome name="check" />}  {!application.paid ? "Pagar" : "Pagado"}</button>
 

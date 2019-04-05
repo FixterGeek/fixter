@@ -12,7 +12,7 @@ export const Redux = () => {
 				<div className="text-portada">
 					<h2>Curso de Redux</h2>
 					<p>Aprende Redux fácilmente sólo con JavaScript</p>
-					<p>13 de Abril | CDMX</p>
+					<p>27 de Abril | CDMX</p>
 				</div>
 			</div>
 			<div className="curso-box">
@@ -61,7 +61,7 @@ export const Redux = () => {
 
 				</div>
 				<div className="box-dos">
-					<div className="date"> <h3>¡Iniciamos el 13 de Abril!</h3></div>
+					<div className="date"> <h3>¡Iniciamos el 27 de Abril!</h3></div>
 
 					<p>Si eres una persona apasionada por la
 						tecnología, no pierdas esta oportunidad y
@@ -73,7 +73,9 @@ export const Redux = () => {
 						<p>Cubic idea | Jalapa #1000, Roma Norte, CDMX</p>
 					<br/>
 					<div style={{textAlign:"center"}}>
-						<button className="btn_app">Aplicar</button>
+						<Link to="/aply">
+							<button className="btn_app">Aplicar</button>
+						</Link>
 					</div>
 				</div>
 			</div>

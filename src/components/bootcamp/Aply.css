@@ -81,7 +81,7 @@
 	display: flex;
 	align-items: center;
 }
-input {
+.aplicacion input, .pay input {
 	border: none;
 	margin-left: 10px;
 	padding-left: 5px;
@@ -130,7 +130,7 @@ textarea {
 	}
 }
 @media (max-width: 440px) {
-	input {
+	.aplicacion input {
 		margin-left: 15px;
 		width: 80%;
 		padding-left: 10px;
