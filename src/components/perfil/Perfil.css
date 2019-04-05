@@ -113,9 +113,15 @@
 .crs:hover .aviso{
     display: inherit;
 }
+@media(max-width: 440px) {
+	.perfil_progress{
+		width: 90%;
+	}
+}
 @media (max-width: 376px){
     .perfil_progress{
         text-align: center;
+
     }
     .box_courses{
         justify-content: center;

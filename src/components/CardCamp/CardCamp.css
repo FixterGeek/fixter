@@ -89,6 +89,7 @@
 	align-items: center;
 }
 
+/*
 @media(max-width: 440px){
     .card_info{
         padding: 3% 5%;
@@ -126,3 +127,4 @@
         font-size: 12px;
     }
 }
+*/

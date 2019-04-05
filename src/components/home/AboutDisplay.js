@@ -12,12 +12,13 @@ export const AboutDisplay = () => {
 				<div className="why-text">
 					<h2>Aprende los lenguajes de programación más utilizados para el desarrollo de software</h2>
 					<p>En Fixter podrás aprender los
-						lenguajes de programación más utilizados a nivel mundial para el desarrollo web, data science y machine learning.
-						<br/><br/>
+						lenguajes de programación más utilizados a nivel mundial para el desarrollo web, data science y machine learning.</p>
+
+						<p className="vs">
 						Nuestro bootcamp busca enseñar a los curiosos por el código los lenguajes de programación más modernos de forma profesional.</p>
 				</div>
-				<div>
-					<img className="why-img" src={photo} alt=""/>
+				<div className="why-img">
+					<img  src={photo} alt=""/>
 				</div>
 			</div>
 			<WhyDisplay/>
