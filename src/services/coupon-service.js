@@ -17,3 +17,8 @@ export function getCoupons() {
     return axios.get(url + "cupons/", CONFIG)
         .then(res => res.data)
 }
+
+export function deleteCoupon(id) {
+    return axios.delete(url + `cupons/${id}`, CONFIG)
+        .then(res => res.data)
+}
