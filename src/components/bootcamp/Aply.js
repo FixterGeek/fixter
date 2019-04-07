@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Aply.css';
 import { AplyForm } from './AplyForm';
 import toastr from 'toastr'
-import {getCourses} from "../../services/course-service";
+import {getEditions} from "../../services/course-service";
 import axios from 'axios';
 
 const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
@@ -28,10 +28,8 @@ class Aply extends Component {
 			toastr.info("Debes iniciar sesión primero.");
 			this.props.history.push("/login?next=/aplicar");
         }
-		getCourses()
-			.then(res => {
-                console.log(res)
-				const {courses} = res.data;
+		getEditions()
+			.then(courses => {
 				this.setState({courses});
 			}).catch(err => console.error(err))
     }
@@ -70,7 +68,7 @@ class Aply extends Component {
 				})
 				.catch(e => {
 					console.log(e);
-                    toastr.warning("Tu sesión expiró, porfavor inicia sesión nuevamente.");
+                    toastr.warning("Tu sesión expiró, porfavor intenta nuevamente.");
                     this.removeToken()
 				});
 		} else {

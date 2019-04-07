@@ -9,5 +9,19 @@ export const getCourses = () => {
 };
 
 export  const createCourse = (obj) => {
-	return axios.post(`${base_url}/courses/`, obj)
+	return axios.post(`${base_url}/courses/`, obj).then(res=>res.data)
+};
+
+// editions
+
+export const getEditions = () => {
+	return axios.get(`${base_url}/editions/`).then(res=>res.data)
+};
+
+export  const createEdition = (obj) => {
+	return axios.post(`${base_url}/editions/`, obj).then(res=>res.data)
+};
+
+export const deleteEdition = (id) => {
+	return axios.delete(`${base_url}/editions/${id}`).then(res=>res.data)
 };
