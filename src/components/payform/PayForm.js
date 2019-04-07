@@ -177,7 +177,7 @@ class PayForm extends Component {
 				this.setState({ card });
 			})
 			.catch(e => {
-				toastr.error(`${e.response.data.message}`);
+				toastr.error(`Algo malo pasó`);
 				console.error(e)
 			})
 	};
@@ -185,10 +185,10 @@ class PayForm extends Component {
 	getCost = () => {
 		const { plazo, cupon } = this.state.card;
 		const { application } = this.state;
-		let cost = (plazo === "contado" && cupon.valid) || (plazo !== "contado" && cupon.valid) ? //really ? XD
-			(application.cost * (1 - cupon.value / 100)) : plazo === "contado" ? // more really?
-				(application.cost * 1) : application.cost // .9 before, it's obvious now but i will let the code if we want to reverse
+		console.log(application)
+		let cost = cupon.valid ? (application.cost * (1 - cupon.value / 100)) : application.cost 
 		if (typeof cost === "number") cost = cost.toFixed(0)
+		console.log(cost)
 		return cost
 	}; // I guess this is nt at the backend right?
 
@@ -199,7 +199,7 @@ class PayForm extends Component {
 			<div className="pay">
 
 				<div className="card_form">
-					<h2>Bootcamp: Información de Pago</h2>
+					<h2> Formulario de pago  </h2>
 					<hr className="division" />
 
 					<form onSubmit={this.handlePayment}>

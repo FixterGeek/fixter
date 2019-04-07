@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
+//const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
 
-//const url = "https://fixtercamp.herokuapp.com"
+const url = "https://fixtercamp.herokuapp.com"
 
 
 function getToken() {

@@ -5,7 +5,8 @@ import toastr from 'toastr'
 import {getEditions} from "../../services/course-service";
 import axios from 'axios';
 
-const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
+//const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
+let url = "https://fixtercamp.herokuapp.com"
 
 class Aply extends Component {
     state = {
@@ -50,10 +51,19 @@ class Aply extends Component {
         // validando que el formulario tenga los 4 atributos minimos
         return Object.keys(newAply).length >= 4;
     };
-    onSave = e => {
+
+    setPrice = e => {
         e.preventDefault();
+        let {newAply, courses} = this.state
+        let course = courses.find(el=>el._id === newAply.course)
+        if(course) newAply.cost = course.price
+        this.setState({newAply}, ()=>this.onSave())
+    }
+
+    onSave = () => {
         let user = JSON.parse(localStorage.getItem("user"));
-		const { newAply } = this.state;
+        const { newAply } = this.state;
+        console.log("ya??", newAply)
         if(user) newAply.user = user._id;
         if (this.validateForm()) {
 			axios
@@ -90,7 +100,7 @@ class Aply extends Component {
 					{...newAply}
                     onChangeAply={this.onChangeAply}
                     errors={errors}
-                    onSave={this.onSave}
+                    onSubmit={this.setPrice}
                 />
             </div>
         );

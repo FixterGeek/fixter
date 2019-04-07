@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com/" : "http://localhost:3000/";
+//const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com/" : "http://localhost:3000/";
+let url = "https://fixtercamp.herokuapp.com/"
+
 const CONFIG = { headers: { Authorization: getToken() } }
 
 function getToken() {
