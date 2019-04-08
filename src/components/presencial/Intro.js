@@ -1,19 +1,20 @@
-import React, { Component } from "react";
-import FontAwesome from "react-fontawesome";
+import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import FontAwesome from "react-fontawesome";
 
-class ReactRedux extends Component {
+class Redux extends Component {
 	componentDidMount () {
 		window.scroll(0, 0)
 	}
 	render() {
 		return (
+
 			<div>
 				<div className="slide-curso">
 					<div className="text-portada">
-						<h2>Curso de React-Redux</h2>
-						<p>Aprende a </p>
-						<p>2 de Mayo | CDMX</p>
+						<h2>Curso de Introducción A JavaScript</h2>
+						<p>Aprende las bases del Desarrollo Web con JavaScript</p>
+						<p>29 de Abril | CDMX</p>
 					</div>
 				</div>
 				<div className="curso-box">
@@ -21,17 +22,11 @@ class ReactRedux extends Component {
 						<h2>Acerca del curso</h2>
 						<hr/>
 						<br/>
-						<p>Escuchamos que Redux es genial y que es un obligado a la hora de trabajar con React,
-							pero a veces es difícil abordar Redux cuando no se entienden sus partes, cómo se
-							configura o usa. En este curso aprenderás cómo usar Redux sólo con JavaScript.
-							Configurando a mano todas sus herramientas además de entender cómo funciona
-							una aplicación basada en estado con Redux, delegando a Redux el renderisado de
-							la aplicación en caso de que nuestro estado cambie.
+						<p>
 
 
 
-							Una vez que entiendas cómo usar Redux y cómo implementarlo en un
-							proyecto sólo con JavaScript, podrás abordar su uso con ReactJS mucho más fácil.</p>
+						</p>
 						{/*<h3>Herramientas</h3>
 					<FontAwesome name="js-square"/>*/}
 						<br/>
@@ -68,7 +63,7 @@ class ReactRedux extends Component {
 							tecnología, no pierdas esta oportunidad y
 							agrega skills a tu stack profesional.</p>
 						<h3><FontAwesome name="clock-o"/> Duración (36 horas)</h3>
-						<p> Martes y jueves de 7:00pm a 10:00pm <br/> Sábado de 10:00am a 1:00pm  </p>
+						<p> Martes y jueves (7pm a 10pm) y Sábado (10am a 1pm) </p>
 
 						<h3><FontAwesome name="building"/> Lugar</h3>
 						<p>Cubic idea | Jalapa #1000, Roma Norte, CDMX</p>
@@ -82,7 +77,8 @@ class ReactRedux extends Component {
 				</div>
 			</div>
 		);
-	}
+	};
+
 }
 
-export default ReactRedux;
+export default Redux;

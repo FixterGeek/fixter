@@ -114,6 +114,7 @@
 }
 .menu p, .menu button{
 	margin: 0 20px;
+	transition: all 1s ease;
 }
 
 .divider{
@@ -133,6 +134,10 @@
 	color:white;
 	font-size: 16px;
 	cursor: pointer;
+}
+
+.nav p:hover{
+	color: #ffce4d;
 }
 
 

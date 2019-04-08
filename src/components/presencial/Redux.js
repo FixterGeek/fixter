@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {Component} from 'react';
 import nerd from '../../assets/nerd_pag.png';
 import {Link} from 'react-router-dom';
 import FontAwesome from "react-fontawesome";
+import Presencial from "./PresencialDetail";
 
 
-export const Redux = () => {
+class Redux extends Component {
+	componentDidMount () {
+		window.scroll(0, 0)
+	}
+	render() {
+		return (
 
-	return (
 		<div>
 			<div className="slide-curso">
 				<div className="text-portada">
@@ -82,3 +87,8 @@ export const Redux = () => {
 		</div>
 	);
 };
+
+}
+
+export default Redux;
+

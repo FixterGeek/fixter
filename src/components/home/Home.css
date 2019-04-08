@@ -810,6 +810,10 @@
 	margin: 10px 10px;
 	color:#424242;
 }
+
+.cuadro h4{
+	color: #ffce4d;
+}
 .mobile{
 	display: none;
 	background-image:url('../../assets/_DSC0371.JPG') ;

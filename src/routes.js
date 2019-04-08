@@ -23,7 +23,8 @@ import Vue from "./components/bootcamp/Vue";
 import Python from './components/bootcamp/Python';
 import Presencial from "./components/presencial/PresencialDetail";
 import ReactRedux from "./components/presencial/ReactRedux";
-import {Redux} from "./components/presencial/Redux";
+import Redux from "./components/presencial/Redux";
+import Intro from './components/presencial/Intro';
 
 export const Routes = () => (
 	<Switch>
@@ -35,6 +36,7 @@ export const Routes = () => (
 		<Route path="/online" component={CourseList} />
 		<Route path="/react-redux" component={ReactRedux} />
 		<Route path="/redux" component={Redux} />
+		<Route path="/intro" component={Intro}/>
 
 		<Route path="/bootcamp" component={Bootcamp} />
 		{/* // viewer */}
