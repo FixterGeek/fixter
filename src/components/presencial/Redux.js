@@ -53,6 +53,7 @@ class Redux extends Component {
 						<p><FontAwesome name="check-square"/> Redux Dispatch & Subscribe</p>
 						<p><FontAwesome name="check-square"/> Update & Delete</p>
 {/*
+
 						<p className="nota">Descarga el temario completo <a href={link} target="blank"> aquí</a></p>
 */}
 					</div>

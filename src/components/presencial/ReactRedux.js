@@ -39,15 +39,16 @@ class ReactRedux extends Component {
 							<h3>Temario</h3>
 							<hr/>
 							<br/>
-							<p><FontAwesome name="check-square"/> Instalación de Redux vía CDN y NPM</p>
-							<p><FontAwesome name="check-square"/> Configuración de Webpack</p>
-							<p><FontAwesome name="check-square"/> Estructura y estilos</p>
-							<p><FontAwesome name="check-square"/> Construyendo una app con VanillaJs</p>
-							<p><FontAwesome name="check-square"/> Manipulación del DOM</p>
-							<p><FontAwesome name="check-square"/> Redux Store</p>
-							<p><FontAwesome name="check-square"/> Reducer</p>
-							<p><FontAwesome name="check-square"/> Redux Dispatch & Subscribe</p>
-							<p><FontAwesome name="check-square"/> Update & Delete</p>
+							<p><FontAwesome name="check-square"/> Entendiendo Redux</p>
+							<p><FontAwesome name="check-square"/> Instalación y configuración de entorno</p>
+							<p><FontAwesome name="check-square"/> Creando un proyecto React</p>
+							<p><FontAwesome name="check-square"/> Conectando Redux a nuestro proyecto</p>
+							<p><FontAwesome name="check-square"/> Librería: React-Redux</p>
+							<p><FontAwesome name="check-square"/> Ejercicio | Usando Redux</p>
+							<p><FontAwesome name="check-square"/> Redux con Hooks</p>
+							<p><FontAwesome name="check-square"/> Redux Avanzado</p>
+							<p><FontAwesome name="check-square"/> Thunks, Sagas y Selectores</p>
+
 							{/*
 						<p className="nota">Descarga el temario completo <a href={link} target="blank"> aquí</a></p>
 */}
@@ -62,7 +63,7 @@ class ReactRedux extends Component {
 
 					</div>
 					<div className="box-dos">
-						<div className="date"> <h3>¡Iniciamos el 29 de Abril!</h3></div>
+						<div className="date"> <h3>¡Iniciamos el 2 de Mayo!</h3></div>
 
 						<p>Si eres una persona apasionada por la
 							tecnología, no pierdas esta oportunidad y

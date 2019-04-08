@@ -4,6 +4,7 @@ import FontAwesome from 'react-fontawesome';
 import {Link} from 'react-router-dom';
 import redux from '../../assets/56232202_166098817648810_4760126431843844096_n.png';
 import react from '../../assets/56262482_2424190330947035_2824521118352670720_n.png';
+import js from '../../assets/Introduccion-JavaScript-Lunes-Miercoles-Viernes.png';
 
 class Presencial extends Component {
 	componentDidMount () {
@@ -58,7 +59,7 @@ class Presencial extends Component {
 						</div>
 					</div>
 					<div className="card-p">
-						<div className="card-p_img" style={{backgroundImage:`url('https://images.pexels.com/photos/41227/pexels-photo-41227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')`}}>
+						<div className="card-p_img" style={{backgroundImage:`url('${js}')`}}>
 							<Link to="/intro">
 								<div className="cover">
 									<p><FontAwesome name="info-circle"/>  Ver detalle del curso</p>

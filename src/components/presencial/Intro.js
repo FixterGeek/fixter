@@ -23,8 +23,11 @@ class Redux extends Component {
 						<hr/>
 						<br/>
 						<p>
-
-
+							En este curso vas a aprender qué es y cómo utilizar Javascript
+							para crear sitios web, ahora que sabes lo básico de HTML y CSS es
+							hora de dar el salto a la interactividad y animaciones con código.
+							Empezaremos desde cero hasta dominar lo que llamamos “manipulación del
+							DOM” con JavaScript.
 
 						</p>
 						{/*<h3>Herramientas</h3>
@@ -34,15 +37,13 @@ class Redux extends Component {
 							<h3>Temario</h3>
 							<hr/>
 							<br/>
-							<p><FontAwesome name="check-square"/> Instalación de Redux vía CDN y NPM</p>
-							<p><FontAwesome name="check-square"/> Configuración de Webpack</p>
-							<p><FontAwesome name="check-square"/> Estructura y estilos</p>
-							<p><FontAwesome name="check-square"/> Construyendo una app con VanillaJs</p>
-							<p><FontAwesome name="check-square"/> Manipulación del DOM</p>
-							<p><FontAwesome name="check-square"/> Redux Store</p>
-							<p><FontAwesome name="check-square"/> Reducer</p>
-							<p><FontAwesome name="check-square"/> Redux Dispatch & Subscribe</p>
-							<p><FontAwesome name="check-square"/> Update & Delete</p>
+							<p><FontAwesome name="check-square"/> HTML y CSS</p>
+							<p><FontAwesome name="check-square"/> Javascript fundamentals</p>
+							<p><FontAwesome name="check-square"/> Javascript advanced</p>
+							<p><FontAwesome name="check-square"/> Document Object Model</p>
+							<p><FontAwesome name="check-square"/> DOM Manipulation Basic Selectors</p>
+							<p><FontAwesome name="check-square"/> DOM Events</p>
+
 							{/*
 						<p className="nota">Descarga el temario completo <a href={link} target="blank"> aquí</a></p>
 */}
