@@ -36,7 +36,8 @@ export const PerfilDisplay = ({ photoURL, displayName, email, isLogged, applicat
                         <div>
                             {applications.map((app, key) => {
                                 let {course = {}} = app
-                                let {title = "Sin titulo", updatedAt} = course
+                                let title = course ? course.title : "Sin titulo"
+                                let updatedAt = course ? course.updatedAt : null
                                 return (
                                 <AplicationCard
                                     key={key}

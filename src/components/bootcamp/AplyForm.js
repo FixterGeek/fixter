@@ -3,7 +3,7 @@ import "./Aply.css";
 import FontAwesome from "react-fontawesome";
 
 export const AplyForm = ({
-	onSave,
+	onSubmit,
 	errors,
 	onChangeAply,
 	name,
@@ -19,7 +19,7 @@ export const AplyForm = ({
 					<h2>Inscribete a nuestro Bootcamp ahora</h2>
 					<hr className="division" />
 					<form
-						onSubmit={onSave}
+						onSubmit={onSubmit}
 						method="post"
 						name="sentMessage"
 						action=""

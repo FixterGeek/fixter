@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getCoupons, createCoupon } from '../../../services/coupon-service'
+import { getCoupons, createCoupon, deleteCoupon } from '../../../services/coupon-service'
 import FontAwesome from 'react-fontawesome'
 import toastr from 'toastr'
 
@@ -48,6 +48,15 @@ export default function ({ }) {
             })
     }
 
+    function removeCoupon(id){
+        if(!window.confirm("Segur@?")) return
+        deleteCoupon(id)
+        .then(()=>{
+            toastr.info("Cupón borrado")
+            getCupons()
+        })
+    }
+
     return (
         <div style={{ paddingTop: '60px', maxWidth: 960, marginLeft: 'auto', marginRight: 'auto' }}>
             <h1>Cupones</h1>
@@ -58,6 +67,7 @@ export default function ({ }) {
                         {" | "}
 
                         <FontAwesome
+                            onClick={()=>removeCoupon(c._id)}
                             style={{ cursor: "pointer" }}
                             name='trash' />
                     </p>

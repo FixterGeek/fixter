@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import './Aply.css';
 import { AplyForm } from './AplyForm';
 import toastr from 'toastr'
-import {getCourses} from "../../services/course-service";
+import {getEditions} from "../../services/course-service";
 import axios from 'axios';
 
-const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
+//const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
+let url = "https://fixtercamp.herokuapp.com"
 
 class Aply extends Component {
     state = {
@@ -28,9 +29,8 @@ class Aply extends Component {
 			toastr.info("Debes iniciar sesión primero.");
 			this.props.history.push("/login?next=/aplicar");
         }
-		getCourses()
-			.then(res => {
-				const {courses} = res.data;
+		getEditions()
+			.then(courses => {
 				this.setState({courses});
 			}).catch(err => console.error(err))
     }
@@ -51,10 +51,19 @@ class Aply extends Component {
         // validando que el formulario tenga los 4 atributos minimos
         return Object.keys(newAply).length >= 4;
     };
-    onSave = e => {
+
+    setPrice = e => {
         e.preventDefault();
+        let {newAply, courses} = this.state
+        let course = courses.find(el=>el._id === newAply.course)
+        if(course) newAply.cost = course.price
+        this.setState({newAply}, ()=>this.onSave())
+    }
+
+    onSave = () => {
         let user = JSON.parse(localStorage.getItem("user"));
-		const { newAply } = this.state;
+        const { newAply } = this.state;
+        console.log("ya??", newAply)
         if(user) newAply.user = user._id;
         if (this.validateForm()) {
 			axios
@@ -69,12 +78,18 @@ class Aply extends Component {
 				})
 				.catch(e => {
 					console.log(e);
-					toastr.error("No se pudo subir, intenta más tarde.");
+                    toastr.warning("Tu sesión expiró, porfavor intenta nuevamente.");
+                    this.removeToken()
 				});
 		} else {
-			alert("existen errores");
+			toastr.error("existen errores");
 		}
-	};
+    };
+    
+    removeToken = () => {
+        localStorage.clear()
+        this.props.history.push('/login')
+    }
 
     render() {
         const {errors, courses, newAply } = this.state
@@ -85,7 +100,7 @@ class Aply extends Component {
 					{...newAply}
                     onChangeAply={this.onChangeAply}
                     errors={errors}
-                    onSave={this.onSave}
+                    onSubmit={this.setPrice}
                 />
             </div>
         );

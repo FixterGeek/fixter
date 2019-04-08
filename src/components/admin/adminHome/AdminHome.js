@@ -6,7 +6,9 @@ import moment from "moment";
 import "moment/locale/es";
 import './AdminHome.css';
 
-const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
+//const url = process.env.NODE_ENV === 'production' ? "https://fixtercamp.herokuapp.com" : "http://localhost:3000";
+
+let url = "https://fixtercamp.herokuapp.com"
 
 export default class AdminHome extends Component {
 	state = {
@@ -27,7 +29,7 @@ export default class AdminHome extends Component {
 				}
 			})
 			.then(res => {
-				console.log("tipo: ", typeof res.data);
+				console.log("res: ", res);
 				this.setState({ apps: res.data });
 			})
 			.catch(e => {
@@ -75,7 +77,7 @@ export default class AdminHome extends Component {
 									key={i}
 								>
 									<h4>{a.name}</h4>
-									<p>{a.course.title ? a.course.title : a.course}</p>
+									<p>{a.course ? a.course.title : a.course}</p>
 									<p>{a.tel}</p>
 									<p>{a.mail}</p>
 									<p>{a.comments}</p>
