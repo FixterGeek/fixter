@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import HomeContainer from "./components/home/HomeContainer";
 import Nosotros from "./components/nosotros/Nosotros";
-import Bootcamp from "./components/bootcamp/Bootcamp";
+//import Bootcamp from "./components/bootcamp/Bootcamp";
 import { CourseList, LessonList, OnlineDetail } from './components/online'
 //viewer
 import ViewerPage from './components/courseViewer/ViewerPage'
@@ -25,6 +25,7 @@ import Presencial from "./components/presencial/PresencialDetail";
 import ReactRedux from "./components/presencial/ReactRedux";
 import Redux from "./components/presencial/Redux";
 import Intro from './components/presencial/Intro';
+import OnlineBootcampLanding from "./components/onlineBootcamp/OnlineBootcampLanding";
 
 export const Routes = () => (
 	<Switch>
@@ -38,7 +39,7 @@ export const Routes = () => (
 		<Route path="/redux" component={Redux} />
 		<Route path="/intro" component={Intro}/>
 
-		<Route path="/bootcamp" component={Bootcamp} />
+		<Route path="/bootcamp" component={OnlineBootcampLanding} />
 		{/* // viewer */}
 		<Route
 			path="/online/:courseId/:lessons/:lessonId"

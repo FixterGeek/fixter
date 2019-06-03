@@ -9,6 +9,15 @@ function getToken() {
 	return localStorage.getItem('token')
 }
 
+export const payBootcamp = (obj) => {
+	const HEADERS = {
+		headers: {
+			"Authorization": getToken()
+		}
+	};
+	return axios.post(`${url}/pay/bootcamp/online`, obj, HEADERS)
+}
+
 export const createOrder = (obj) => {
 	const HEADERS = {
 		headers: {

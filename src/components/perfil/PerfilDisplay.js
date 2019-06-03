@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import camp from '../../assets/bootcamp.png';
 import user from '../../assets/user.png';
 import { CardCampDisplay } from '../CardCamp/CardCampDisplay';
 import { AplicationCard } from './AplicationCard';
 import hooks from '../../assets/51565935_2358159057541818_2165592797782999040_o.jpg'
+import axios from 'axios'
 
 
 export const PerfilDisplay = ({ photoURL, displayName, email, isLogged, applications = [], pay }) => {
-    console.log(applications)
+    let [enrolled, setEnrolled] = useState(false)
+    useEffect(()=>{
+        axios.get('https://fixtercamp.herokuapp.com/self', {headers:{"Authorization": localStorage.getItem('token')}})
+        .then(res=>{
+            console.log(res)
+            setEnrolled(res.data.enrolled)
+        })
+    },[])
+    //console.log(applications)
     return (
         <div className="perfil">
             <div className="profile">
@@ -28,11 +37,20 @@ export const PerfilDisplay = ({ photoURL, displayName, email, isLogged, applicat
                     <div>
                         <div style={{ display: "flex" }}>
                             <h2>Bootcamp</h2>
-                            <Link to="/aply">
+                            <Link to="/bootcamp">
                                 <button style={{ marginTop: "20px", marginLeft: "10px" }} className="btn_pay">Aplicar</button>
                             </Link>
                         </div>
                         <hr className="division" />
+                        {enrolled ? 
+                         <AplicationCard
+                         nombre={"Bootcamp online"}
+                         descript=""
+                         fecha={"17/Jul/2019"}
+                         sabatino={false}
+                         precio="20,000.00"
+                     />
+                        :
                         <div>
                             {applications.map((app, key) => {
                                 let {course = {}} = app
@@ -58,7 +76,7 @@ export const PerfilDisplay = ({ photoURL, displayName, email, isLogged, applicat
                                 />
                             )
                             })}
-                        </div>
+                        </div>}
                         {/* <div className="box_courses">
                             <div className="crs opacity">
                                 <img className="batches" src={camp} alt="camp"/>

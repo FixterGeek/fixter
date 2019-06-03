@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import '../CardCamp/CardCamp.css';
 
 
-export const AplicationCard = ({ pay, application, nombre, descript, imagen, fecha, precio, temario, horario, dia, place, address, dia2, horario2, sabatino }) => {
+export const AplicationCard = ({ pay, application={paid:true}, nombre, descript, imagen, fecha, precio, temario, horario, dia, place, address, dia2, horario2, sabatino }) => {
 
     return (
         <div className="card" style={{ minHeight: 'inherit' }}>
